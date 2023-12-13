@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>(우리꺼)츠키노야(月の や)료칸&풀빌라</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            $("#btn-login").on("click", function(){
+                location.href = "/login/login.do";
+            });
+        });
+    </script>
+</head>
+
+<body>
+<header>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm" th:if="${session.userId} == null">
+            <button type="button" class="btn btn-primary" id="btn-login">로그인</button>
+        </div>
+        <div class="col-sm" th:unless="${session.userId} == null">
+            <span th:text="|${session.userName}님 반갑습니다.|"></span>
+            <button type="button" class="btn btn-primary" id="btn-myPage">마이페이지</button>
+            <button type="button" class="btn btn-secondary" id="btn-logout">로그아웃</button>
+
+            <input type="hidden" th:value="${session.userId}" id="user-id">
+        </div>
+    </div>
+</div>
+    <script>
+        $("#btn-logout").on("click", function () {
+            const confirmed = confirm("로그아웃 하시겠습니까?");
+
+            if (confirmed) {
+                location.href = "/login/logout.do";
+            }
+        });
+
+        $("#btn-myPage").on("click", function (key){
+            const userId = $("#user-id").val();
+
+            location.href = "/login/myPage.do?userId=" + userId;
+        });
+    </script>
+</header>
+
+<main>
+
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>

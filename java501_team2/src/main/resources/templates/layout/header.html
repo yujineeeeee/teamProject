@@ -39,15 +39,15 @@
 	<hgroup>
 		<div>
 			<ul>
-				<li><a href=""><span class="en">ABOUT</span><span class="ko">솔스파</span></a></li>
+				<li><a href="/board/location.do"><span class="en">ABOUT</span><span class="ko">솔스파</span></a></li>
 				<li><a href=""><span class="en">NOTICE</span><span class="ko">공지사항</span></a></li>
 				<li><a href=""><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
-				<li><a href=""><span class="en">LOCATION</span><span class="ko">오시는 길</span></a></li>
+				<li><a href="/board/location.do"><span class="en">LOCATION</span><span class="ko">오시는 길</span></a></li>
 			</ul>
 			<ul>
-				<li><a href=""><span class="en">ROOMS</span><span class="ko">객실안내</span></a></li>
-				<li><a href=""><span class="en">SPECIAL</span><span class="ko">특별함</span></a></li>
-				<li><a href=""><span class="en">RESERVATION</span><span class="ko">실시간 예약</span></a></li>
+				<li><a href="javascript:void(0);"><span class="en">ROOMS</span><span class="ko">객실안내</span></a></li>
+				<li><a href="javascript:void(0);"><span class="en">SPECIAL</span><span class="ko">특별함</span></a></li>
+				<li><a href="/reservation.do"><span class="en">RESERVATION</span><span class="ko">실시간 예약</span></a></li>
 				<li th:if="${session.userId} == null">
 					<a href="/login/login.do"><span class="en">LOGIN</span><span class="ko">로그인</span></a>
 				</li>
@@ -69,10 +69,9 @@
 			</div>
 			<div>
 				<ul>
-					<li><a href=""><span>201 TSU (POOL, HINOKI)</span><span>201 츠키 (POOL, 히노끼)</span></a></li>
-					<li><a href=""><span>202 HIKARI (JACUZZI)</span><span>202 히카리 (자쿠지)</span></a></li>
-					<li><a href=""><span>401 (SPA&DUPLEX)</span><span>401 (스파, 복층)</span></a></li>
-					<li><a href=""><span>402 (SPA&DUPLEX)</span><span>402 (스파, 복층)</span></a></li>
+					<li><a href="/room201.do"><span>201 TSU (POOL, HINOKI)</span><span>201 츠키 (POOL, 히노끼)</span></a></li>
+					<li><a href="/room202.do"><span>202 HIKARI (JACUZZI)</span><span>202 히카리 (자쿠지)</span></a></li>
+					<li><a href="/room401.do"><span>401 (SPA&DUPLEX)</span><span>401 (스파, 복층)</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -86,9 +85,9 @@
 			</div>
 			<div>
 				<ul>
-					<li><a href=""><span>PRIVATE POOL</span><span>개별 수영장</span></a></li>
-					<li><a href=""><span>JACUZZI & HINOKI</span><span>자쿠지&히노끼</span></a></li>
-					<li><a href=""><span>PHOTO ZONE</span><span>포토존</span></a></li>
+					<li><a href="/privatePool.do"><span>PRIVATE POOL</span><span>개별 수영장</span></a></li>
+					<li><a href="/jacuzziHinoki.do"><span>JACUZZI & HINOKI</span><span>자쿠지&히노끼</span></a></li>
+					<li><a href="/photoZone.do"><span>PHOTO ZONE</span><span>포토존</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -102,11 +101,42 @@
 			</div>
 			<div>
 				<ul>
-					<li><a href="reserve.html?reserve=rv"><span>RESERVATION</span><span>실시간예약</span></a></li>
-					<li><a href="reserve.html?reserve=gd"><span>GUIDE</span><span>예약안내</span></a></li>
+					<li><a href="/reservation.do"><span>RESERVATION</span><span>실시간예약</span></a></li>
+					<li><a href="#"><span>GUIDE</span><span>예약안내</span></a></li>
 				</ul>
 			</div>
 		</div>
+		<div class="gb">
+			<div>
+				<h4>
+					<span>LOGIN</span>
+					<strong>로그인</strong>
+				</h4>
+				<img src="/images/logo.jpg" width="30%" height="auto" alt="">
+			</div>
+			<div th:if="${session.userId} == null">
+				<ul>
+					<li><a href="/login/login.do"><span>LOGIN</span><span>로그인</span></a></li>
+					<li><a href="/account.do"><span>SIGN IN</span><span>회원가입</span></a></li>
+				</ul>
+			</div>
+			<div th:unless="${session.userId} == null">
+				<ul>
+					<li><a th:href="@{/login/myPage.do(userId=${session.userId})}"><span>MYPAGE</span><span>마이페이지</span></a></li>
+					<li><a href="/login/logout.do" id="btn-logout"><span>LOGOUT</span><span>로그아웃</span></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<script>
+			$("#btn-logout").on("click", function () {
+				const confirmed = confirm("로그아웃 하시겠습니까?");
+
+				if (confirmed) {
+					location.href = "/login/logout.do";
+				}
+			});
+		</script>
 	</nav>
 </header>
 </body>

@@ -122,7 +122,7 @@ $(function(){
             break;
 
         //about Page
-        case 'index' :
+        case '/board/location.do' :
             // videoControl(video);
 
             // new Vimeo.Player(video).on('play',function(){

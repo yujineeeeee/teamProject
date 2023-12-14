@@ -47,42 +47,60 @@
 <body>
 <div th:replace="~{/layout/header :: headerNavbar}"></div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-sm">
-            <label class="form-label">id : </label>
-            <label class="form-label" th:text="${user.getUserId()}"></label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <label class="form-label">이름 : </label>
-            <label class="form-label" th:text="${user.getUserName()}"></label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <label class="form-label">가입날짜 : </label>
-            <label class="form-label" th:text="${user.getUserRegidate()}"></label>
-        </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-sm">
-            <button type="button" class="btn btn-primary" id="btn-main">홈화면</button>
-            <button type="button" class="btn btn-warning" id="btn-logout">로그아웃</button>
+<section>
+    <div class="section banner" id="Banner">
+        <div class="InBox">
+            <h2 class="ttls">
+                <div></div>
+                <span> CONFIRM YOUR&nbsp;<b>INFORMATION & RESERVATION</b></span>
+                <strong>MY PAGE</strong>
+            </h2>
         </div>
     </div>
 
-    <script>
-        $("#btn-logout").on("click", function () {
-            const confirmed = confirm("로그아웃 하시겠습니까?");
+    <div class="container mt-5">
+        <h3>MY INFORMATION</h3>
+        <div class="bg-secondary-subtle">
+            <div class="bg-warning mt-3">
+                <div class="row">
+                    <div class="col-sm">
+                        <label class="form-label">ID :</label>
+                        <label class="form-label" th:text="${user.getUserId()}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <label class="form-label">NAME :</label>
+                        <label class="form-label" th:text="${user.getUserName()}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <label class="form-label">JOIN DATE :</label>
+                        <label class="form-label" th:text="${user.getUserRegidate()}" />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            if (confirmed) {
-                location.href = "/login/logout.do";
-            }
-        });
-    </script>
-</div>
+        <h3 class="mt-5">MY RESERVATION</h3>
+        <div class="bg-danger mt-3">
+            <div class="row">
+                <div class="col-sm">
+                    <label class="form-label">예약일 :</label>
+                    <label class="form-label" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <label class="form-label">예약한 방 정보 :</label>
+                    <label class="form-label" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <div th:replace="~{/layout/footer :: footer}"></div>
 

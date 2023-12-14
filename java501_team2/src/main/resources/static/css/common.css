@@ -9,6 +9,7 @@
 
 #Specials .InBox ul:nth-child(1) li:nth-of-type(1) div.img       {background-image:url(http://gonylab7.speedgabia.com/solspa/special/1/1.jpg);}
 #Specials .InBox ul:nth-child(1) li:nth-of-type(2) div.img       {background-image:url(http://gonylab7.speedgabia.com/solspa/special/2/1.jpg);}
+#Specials .InBox ul:nth-child(1) li:nth-of-type(2) div.img       {background-image:url(http://gonylab7.speedgabia.com/solspa/special/2/1.jpg);}
 #Specials .InBox ul:nth-child(1) li:nth-of-type(3) div.img       {background-image:url(http://gonylab7.speedgabia.com/solspa/special/3/1.jpg);}
 #Specials .InBox ul:nth-child(1) li:nth-of-type(4) div.img       {background-image:url(http://gonylab7.speedgabia.com/solspa/special/6/1.jpg);}
 
@@ -27,7 +28,8 @@ section,.section					                {position:relative;width:100%;}
 /* video */
 #Videos                                             {height:100vh;min-height:562px;}
 .MyFrame 					                        {position:relative;width:100%;height:100vh;min-height:562px;overflow:hidden;}
-.MyFrame #MyVideo		 	                        {position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);background-repeat:no-repeat;background-position:50% 50%;}
+/*.MyFrame #MyVideo		 	                        {position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);background-repeat:no-repeat;background-position:50% 50%;}*/
+.MyFrame #MyVideo		 	                        {position:absolute;top:50%;left:40%;transform: translate(-40%,-40%);background-repeat:no-repeat;background-position:50% 50%;}
 .MyFrame #MyVideo		 	                        {min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;background-size:cover;display:block;}
 
 /* Banner */
@@ -41,6 +43,7 @@ section,.section					                {position:relative;width:100%;}
 #Banner .InBox .ttls strong                         {display:block;font-size:75px;margin:15px 0 0 15px;letter-spacing:3px;}
 
 /* Visual */
+/*#visual                                             {position:relative;width:100%;height:95vh;min-height:600px;}*/
 #visual                                             {position:relative;width:100%;height:95vh;min-height:600px;}
 #visual                                             {background-repeat:no-repeat;background-position:50% 50%;background-size:cover;}
 /*#visual:before                                      {position:absolute;top:0;left:0;width:100%;height:100%;content:"";display:block;opacity:0.3;background:#000;z-index:1;}*/
@@ -140,6 +143,13 @@ nav > div.gb:nth-of-type(3) ul                      {width:50%;float:right;}
 nav > div.gb:nth-of-type(3) ul li                   {float:none;width:100%;}
 nav > div.gb:nth-of-type(3) ul li span              {display:inline-block;}
 nav > div.gb:nth-of-type(3) ul li span:last-child   {margin-left:10px;}
+
+nav > div.gb:nth-of-type(4) ul                      {width:50%;float:right;}
+nav > div.gb:nth-of-type(4) ul li                   {float:none;width:100%;}
+nav > div.gb:nth-of-type(4) ul li span              {display:inline-block;}
+nav > div.gb:nth-of-type(4) ul li span:last-child   {margin-left:10px;}
+
+
 
 header .rvbtn                                       {position:fixed;top:50%;right:0; transform: translateY(-50%); transition:0.3s;z-index:50;}
 header .rvbtn:hover                                 {opacity:0.8;}

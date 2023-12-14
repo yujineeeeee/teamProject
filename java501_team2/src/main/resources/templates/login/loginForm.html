@@ -12,8 +12,8 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내" />
-    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장" />
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내"/>
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장"/>
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="츠키노야(月の や)료칸&풀빌라">
@@ -22,7 +22,7 @@
     <meta property="og:url" content="http://pensionsol.net/">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
 
 
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -30,7 +30,8 @@
     <script type="text/javascript" src="js/modify.js" defer></script>
     <script type="text/javascript" src="js/swiper.js" defer></script>
     <script type="text/javascript" src="js/common.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+            defer></script>
     <script type="text/javascript" src="js/digitalnowplus.popup.js" defer></script>
 
     <!-- analytics -->
@@ -40,7 +41,7 @@
     <script th:inline="javascript">
         const msg = [[${param.errorMsg}]];
 
-        if(!(msg == null || msg == "" || msg == undefined)){
+        if (!(msg == null || msg == "" || msg == undefined)) {
             alert(msg);
         }
     </script>
@@ -50,7 +51,7 @@
 <body>
 <div th:replace="~{/layout/header :: headerNavbar}"></div>
 
-<!--<main class="container mt-5">-->
+<!--<main class="container mt-5" style="height: 1000px;">-->
 <!--    <div class="row">-->
 <!--        <div class="col-sm-4 mx-auto">-->
 <!--            <div class="border rounded-3 p-3">-->
@@ -69,7 +70,7 @@
 <!--                        <button type="reset" class="btn btn-secondary">취소</button>-->
 <!--                    </div>-->
 <!--                    <div class="mt-2 d-flex justify-content-end">-->
-<!--                        <a th:href="@{/board2/login/signup.do}" class="btn btn-link">회원가입</a>-->
+<!--                        <a th:href="@{/account.do}" class="btn btn-link">회원가입</a>-->
 <!--                    </div>-->
 <!--                </form>-->
 <!--            </div>-->
@@ -77,18 +78,41 @@
 <!--    </div>-->
 <!--</main>-->
 
-<section>
-    <div class="section banner" id="Banner">
-        <div class="InBox">
-            <h2 class="ttls">
-                <div></div><span> SIGN IN <b>HOMEPAGE</b></span>
-                <strong>LOGIN</strong>
-            </h2>
-        </div>
-        <div id="scroll"><a href="#"><img src="/images/scroll.png" width="107" height="107" alt=""></a></div>
-    </div>
-    <div class="" style="height: 1000px">
+<section class="vh-100" style="background-image: url(https://www.yeogi.com/_next/image?url=https%3A%2F%2Fimage.goodchoice.kr%2Faffiliate%2F2023%2F07%2F15%2F17%2F1685943724646GntIi1FZIXWSwcrmHAo.jpg&w=1920&q=75); background-size: cover">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 ">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mb-5">LOGIN</h3>
+                        <form action="/login/login.do" method="post">
+                            <div class="from-outline mb-4">
+                                <div class="form-floating">
+                                    <input type="text" id="user-id" class="form-control form-control-lg" name="userId">
+                                    <label class="form-label" for="user-id" >ID</label>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <div class="form-floating">
+                                    <input type="password" id="user-pass" class="form-control form-control-lg" name="userPass">
+                                    <label class="form-label" for="user-pass">PASSWORD</label>
+                                </div>
+                            </div>
+                            <div class="d-grid gap2">
+                                <button type="submit" class="btn btn-primary btn-lg">LOGIN</button>
+                                <button type="reset" class="btn btn-secondary btn-lg mt-2">CANCEL</button>
+                            </div>
+                        </form>
 
+                        <br><hr><br>
+
+                        <div>
+                            <span>You don't have an account?</span><a href="/account.do" class="fw-bold"> SIGN IN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

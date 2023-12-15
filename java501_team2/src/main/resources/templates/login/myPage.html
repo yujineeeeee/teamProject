@@ -60,44 +60,54 @@
 
     <div class="container mt-5">
         <h3>MY INFORMATION</h3>
-        <div class="bg-secondary-subtle">
-            <div class="bg-warning mt-3">
-                <div class="row">
-                    <div class="col-sm">
-                        <label class="form-label">ID :</label>
-                        <label class="form-label" th:text="${user.getUserId()}" />
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="ms-1 mb-3 row">
+                    <label for="user-id" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="user-id" th:value="${session.userId}">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <label class="form-label">NAME :</label>
-                        <label class="form-label" th:text="${user.getUserName()}" />
+                <div class="ms-1 mb-3 row">
+                    <label for="user-name" class="col-sm-2 col-form-label">NAME</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="user-name" th:value="${session.userName}">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <label class="form-label">JOIN DATE :</label>
-                        <label class="form-label" th:text="${user.getUserRegidate()}" />
+                <div class="ms-1 mb-3 row">
+                    <label for="user-regidate" class="col-sm-2 col-form-label">CREATE DATE</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="user-regidate" th:value="${session.userRegidate}">
                     </div>
                 </div>
             </div>
         </div>
 
         <h3 class="mt-5">MY RESERVATION</h3>
-        <div class="bg-danger mt-3">
-            <div class="row">
-                <div class="col-sm">
-                    <label class="form-label">예약일 :</label>
-                    <label class="form-label" />
+        <div class="card mt-3 p-3">
+            <div class="card-body">
+                <div class="ms-1 mb-3 row">
+                    <label for="check-in-date" class="col-sm-2 col-form-label">예약날짜</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="check-in-date" th:value="|${session.userId} ~ ${session.userPass}|">
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <label class="form-label">예약한 방 정보 :</label>
-                    <label class="form-label" />
+                <div class="ms-1 mb-3 row">
+                    <label for="reservation-room-type" class="col-sm-2 col-form-label">방정보</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="reservation-room-type" >
+                    </div>
+                </div>
+                <div class="ms-1 mb-3 row">
+                    <label for="reservation-person-cnt" class="col-sm-2 col-form-label">예약인원</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="reservation-person-cnt">
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div style="height: 100px"></div>
     </div>
 </section>
 

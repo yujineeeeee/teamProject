@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitc.java501_team2.mapper.NoticeMapper">
+    <select id="selectBoardList" resultType="com.bitc.java501_team2.dto.NoticeDto">
+        SELECT notice_num, notice_title,notice_id,notice_postdate, notice_visitcount,notice_update_date
+        FROM notice
+        WHERE notice_deleted_yn='N'
+        ORDER BY notice_num DESC
+    </select>
+
+    <select id="selectBoardDetail" parameterType="int" resultType="com.bitc.java501_team2.dto.NoticeDto">
+        select notice_num,notice_title,notice_content,notice_id,notice_postdate,notice_update_date,notice_visitcount
+        from notice
+        where notice_num = #{noticeNum}
+    </select>
+
+    <insert id="NoticeInsertBoard" parameterType="com.bitc.java501_team2.dto.NoticeDto" useGeneratedKeys="true" keyProperty="noticeNum">
+        INSERT INTO notice(notice_title,notice_content,notice_postdate,notice_id)
+        VALUES(#{noticeTitle},#{noticeContent},NOW(),#{noticeId})
+    </insert>
+
+
+    <update id="updateHitCount" parameterType="int">
+        UPDATE notice SET notice_visitcount = notice_visitcount + 1 WHERE notice_num = #{noticeNum}
+    </update>
+
+    <update id="NoticeUpdateBoard" parameterType="com.bitc.java501_team2.dto.NoticeDto">
+    UPDATE notice SET notice_title=#{noticeTitle}, notice_content=#{noticeContent},
+    notice_update_date=NOW()
+    WHERE notice_num = #{noticeNum}
+    </update>
+
+    <update id="NoticeDeleteBoard" parameterType="int">
+        update notice set  notice_deleted_yn = 'Y' WHERE notice_num= #{noticeNum}
+    </update>
+</mapper>

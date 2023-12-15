@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@@@@@@@@@@@@@@@</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내" />
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="츠키노야(月の や)료칸&풀빌라">
+    <meta property="og:description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
+    <meta property="og:image" content="http://gonylab7.speedgabia.com/solspa/m/main/1.jpg">
+    <meta property="og:url" content="http://pensionsol.net/">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <script type="text/javascript" src="js/modify.js" defer></script>
+    <script type="text/javascript" src="js/swiper.js" defer></script>
+    <script type="text/javascript" src="js/common.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script type="text/javascript" src="js/digitalnowplus.popup.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/notice.css"/>
+
+    <script>
+        $(document).ready(function () {
+            // 뒤로가기 버튼
+            $("#btn-list").on("click",function () {
+                location.href = "/not.do";
+            });
+
+            //   수정 버튼
+            $("#btn-edit").on("click", function () {
+                const frm = $("#frm")[0];
+                frm.action = "/notUpdate.do";
+                frm.submit();
+            });
+
+            //   삭제 버튼
+            $("#btn-delete").on("click", function () {
+                const confirmed = confirm("삭제하시겠습니까?");
+
+                if (confirmed) {
+                    const frm = $("#frm")[0];
+                    frm.action = "/notDeleteBoard.do";
+                    frm.submit();
+
+                    alert("삭제되었습니다.");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body id="community" class="tables">
+<div th:replace="~{layout/header :: headerNavbar}"></div>
+
+<section>
+    <div class="section banner" id="Banner">
+        <div class="InBox">
+            <h2 class="ttls">
+                <div></div>
+                <span> CHECK THE&nbsp;
+                <b>NOTICE</b></span>
+                <strong> NOTICE</strong>
+            </h2>
+        </div>
+    </div>
+    <div class="section contents">
+        <div class="InnerBox" style="height: 100px">
+            <ul class="snb" >
+                <li><a href="#" >공지사항</a></li>
+            </ul>
+
+            <!--        <div class="frame">-->
+            <!--            <iframe src="/board/notice/boardList" width='100%' height='1200' frameborder="0"></iframe>-->
+
+            <!--        /* Tables  [521,524 번 줄-> 공지사항] */ -->
+            <!-- </div>-->
+        </div>
+    </div>
+</section>
+<!--<script type="text/javascript">-->
+<!--    $(function(){-->
+<!--        //direct-->
+<!--        $(".section .snb > li").removeClass("active");-->
+<!--        $(".section .snb > li").eq(0).addClass("active");-->
+<!--        $("#Banner .ttls b").text("NOTICE");-->
+<!--        $("#Banner .ttls strong").text("NOTICE");-->
+
+<!--        $(".frame h3 strong").text("공지사항");-->
+<!--        // $(".frame h3 span").text("공지사항과 다양한 소식을 확인해보세요.");-->
+<!--        // $(".frame iframe").attr("src","/board/bbs/board.php?bo_table=notice_");-->
+
+<!--    });-->
+<!--</script>-->
+
+<section  id="tableSession">
+    <form method="post" id="frm" class="frm">
+        <div class="row mt-3">
+            <div class="col-sm-1">
+                <div class="form-floating" >
+                    <input type="text" class="form-control" style="text-align: center" id="noticeNum" name="noticeNum" readonly placeholder="번호" th:value="${board.noticeNum}">
+                    <label for="noticeNum" style="font-weight: bold" >번호</label>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="title" name="noticeTitle" placeholder="제목" th:value="${board.noticeTitle}">
+                    <label for="title" style="font-weight: bold">제목</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="noticeVisitcount" style="text-align: center" name="noticeVisitcount" readonly placeholder="조회수" th:value="${board.noticeVisitcount}">
+                    <label for="noticeVisitcount" style="font-weight: bold"> 방문수</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="noticePostdate" style="text-align: center" name="noticePostdate" readonly placeholder="등록날짜" th:value="${board.noticePostdate}">
+                    <label for="noticePostdate" style="font-weight: bold">등록한 날짜</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="noticeId"  style="text-align: center" name="noticeId" readonly placeholder="등록한 ID" th:value="${board.noticeId}">
+                    <label for="noticeId" style="font-weight: bold">등록된 아이디</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-floating">
+                    <input type="text" class="form-control" style="text-align: center" id="noticeUpdateDate" name="noticeUpdateDate" placeholder="수정날짜" readonly th:value="${board.noticeUpdateDate}">
+                    <label for="noticeUpdateDate" style="font-weight: bold">수정된 날짜</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="form-floating">
+                    <textarea class="form-control" id="noticeContent" name="noticeContent" placeholder="내용" style="height: 150px" th:text="${board.noticeContent}"></textarea>
+                    <label for="noticeContent" style="font-weight: bold" >내용</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-6">
+            <div class="col-sm d-flex justify-content-start">
+                <button type="button" class="btn" id="btn-list">
+                    <img src="/images/back.jpg" alt="목록"></button>
+            </div>
+            <div class="col-sm d-flex justify-content-center">
+                <button type="button" class="btn me-5" id="btn-edit">
+                    <img src="/images/edit.jpg" alt="수정" ></button>
+            </div>
+            <div class="col-sm d-flex justify-content-end">
+                <button type="button" class="btn  me-5" id="btn-delete"  >
+                    <img src="/images/delete.jpg" alt="삭제" style="margin-bottom: -15px; "></button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+</body>
+
+</html>

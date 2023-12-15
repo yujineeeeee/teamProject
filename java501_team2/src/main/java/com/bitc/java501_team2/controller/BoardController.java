@@ -1,20 +1,25 @@
 package com.bitc.java501_team2.controller;
 
+import com.bitc.java501_team2.dto.NoticeDto;
 import com.bitc.java501_team2.dto.ReservationDto;
+import com.bitc.java501_team2.service.NoticeService;
 import com.bitc.java501_team2.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class BoardController {
 
     @Autowired
     ReservationService reservationService;
+
+    @Autowired
+    private NoticeService noticeService;
 
     @RequestMapping("/")
     public String index() throws Exception {
@@ -29,36 +34,95 @@ public class BoardController {
     }
 
 
+    //    오시는 길
+    @GetMapping("/location.do")
+    public String location2() throws Exception {
+        return "board/location";
+    }
+
+    //    ------------------------------------------- 예약하기 ---------------------------------------------------------
+
     //    예약 페이지
-    @GetMapping(value = "/reservation.do")
+    @RequestMapping(value = "/reservation.do", method = RequestMethod.GET)
     public String reservation() throws Exception {
         return "board/reservation";
     }
 
-    @PostMapping(value = "/reservation.do")
+    @RequestMapping(value = "/reservation.do", method = RequestMethod.POST)
     public ModelAndView reservationProcess() throws Exception {
         ModelAndView mv = new ModelAndView("board/reservation");
 
         ReservationDto board = reservationService.selectReservationList();
-
         mv.addObject("board", board);
 
         return mv;
     }
 
-
-    @GetMapping("/board/insertReservation.do")
+    @RequestMapping("/board/insertReservation.do")
     public String insertReservation(ReservationDto reservation) throws Exception {
         reservationService.insertReservation(reservation);
 
+//        지정한 주소로 리다이렉트
         return "redirect:/reservation.do";
     }
 
+//    ------------------------------------------- 공지사항 ---------------------------------------------------------
 
-    //    오시는 길
-    @GetMapping("/board/location.do")
-    public String location() throws Exception {
-        return "board/location";
+    //    공지사항
+    @RequestMapping(value = "/not.do", method = RequestMethod.GET)
+    public ModelAndView boardList() throws Exception {
+        ModelAndView mv = new ModelAndView("board/notice/boardList");
+
+        List<NoticeDto> boardList = noticeService.selectBoardList();
+        mv.addObject("boardList", boardList);
+
+        return mv;
     }
+
+    //   공지사항 글쓰기 뷰 페이지
+    @RequestMapping("/notWrite.do")
+    public String boardWrite() throws Exception {
+        return "board/notice/boardWrite";
+    }
+
+    //     공지사항 글쓰기
+    @RequestMapping("/notInsertBoard.do")
+    public String insertBoard(NoticeDto board, MultipartHttpServletRequest multipart) throws Exception {
+
+        noticeService.NoticeInsertBoard(board, multipart);
+//        지정한 주소로 리다이렉트
+        return "redirect:/not.do";
+    }
+
+    //         공지사항 상세보기
+    @RequestMapping("/notDetail.do/{noticeNum}")
+    public ModelAndView boardDetail(@PathVariable("noticeNum") int noticeNum) throws Exception {
+        ModelAndView mv = new ModelAndView("board/notice/boardDetail");
+        System.out.println(noticeNum);
+
+
+        NoticeDto board = noticeService.selectBoardDetail(noticeNum);
+        mv.addObject("board", board);
+
+        return mv;
+    }
+
+    //     공지사항 수정
+    @RequestMapping(value = "/notUpdate.do")
+    public String updateBoard(NoticeDto board) throws Exception {
+//        service를 사용하여 사용하여 사용자가 입력한 데이터로 변경
+        noticeService.NoticeUpdateBoard(board);
+        return "redirect:/not.do";
+//        return "redirect:/board/boardDetail.do?boardIdx=" + board.getBoardIdx();
+    }
+
+    //    공지사항 삭제하기
+    @RequestMapping("/notDeleteBoard.do")
+    public String deleteBoard(@RequestParam("noticeNum") int noticeNum) throws Exception {
+//        Service를 사용하여 데이터 베이스의 내용 삭제
+        noticeService.NoticeDeleteBoard(noticeNum);
+        return "redirect:/not.do";
+    }
+
 
 }

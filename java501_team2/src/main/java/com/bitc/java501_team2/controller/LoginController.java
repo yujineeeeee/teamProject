@@ -8,13 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URLEncoder;
 
-@RequestMapping("/login/")
+//@RequestMapping("/login/")
 @Controller
 public class LoginController {
 
@@ -22,8 +21,14 @@ public class LoginController {
     private UserService userService;
 
     //    로그인 페이지
+//    @GetMapping("/login.do")
+//    public String login() throws Exception{
+//        return "loginForm_delete";
+//    }
+
+//    로그인 페이지
     @GetMapping("/login.do")
-    public String login() throws Exception{
+    public String login2() throws Exception{
         return "login/loginForm";
     }
 
@@ -41,7 +46,7 @@ public class LoginController {
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("userRegidate", user.getUserRegidate());
-            session.setMaxInactiveInterval(60);
+//            session.setMaxInactiveInterval(60);
 
             return "redirect:/main.do";
         }

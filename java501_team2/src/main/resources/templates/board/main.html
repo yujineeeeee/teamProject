@@ -40,20 +40,20 @@
 <div id="snb">
     <div>
         <ul>
-            <li><a href=""><span class="en">ABOUT</span><span class="ko">솔스파</span></a></li>
-            <li><a href=""><span class="en">NOTICE</span><span class="ko">공지사항</span></a></li>
+            <li><a href="/location.do"><span class="en">ABOUT</span><span class="ko">솔스파</span></a></li>
+            <li><a href="/not.do"><span class="en">NOTICE</span><span class="ko">공지사항</span></a></li>
             <li><a href=""><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
-            <li><a href="/board/location.do"><span class="en">LOCATION</span><span class="ko">오시는 길</span></a></li>
+            <li><a href="/location.do#location"><span class="en">LOCATION</span><span class="ko">오시는 길</span></a></li>
         </ul>
         <ul>
             <li><a href="javascript:void(0);"><span class="en">ROOMS</span><span class="ko">객실안내</span></a></li>
             <li><a href="javascript:void(0);"><span class="en">SPECIAL</span><span class="ko">특별함</span></a></li>
             <li><a href="/reservation.do"><span class="en">RESERVATION</span><span class="ko">실시간 예약</span></a></li>
             <li th:if="${session.userId} == null">
-                <a href="/login/login.do"><span class="en">LOGIN</span><span class="ko">로그인</span></a>
+                <a href="/login.do"><span class="en">LOGIN</span><span class="ko">로그인</span></a>
             </li>
             <li th:unless="${session.userId} == null">
-                <a th:href="@{/login/myPage.do(userId=${session.userId})}"><span class="en">MYPAGE</span><span class="ko">마이페이지</span></a>
+                <a th:href="@{/myPage.do(userId=${session.userId})}"><span class="en">MYPAGE</span><span class="ko">마이페이지</span></a>
             </li>
         </ul>
     </div>
@@ -86,27 +86,27 @@
         <div class="InBox">
             <ul>
                 <li>
-                    <a href="special.html?num=01">
+                    <a href="/privatePool.do">
                         <div class="img"><div></div></div>
                         <div class="txt"><strong>PRIVATE POOL</strong><span>개별 수영장</span></div>
                     </a>
                 </li>
                 <li>
-                    <a href="special.html?num=02">
+                    <a href="/jacuzziHinoki.do">
                         <div class="img"><div></div></div>
                         <div class="txt"><strong>JACUZZI & HINOKI</strong><span>자쿠지&히노끼</span></div>
                     </a>
                 </li>
                 <li>
-                    <a href="special.html?num=03">
+                    <a href="/photoZone.do">
                         <div class="img"><div></div></div>
                         <div class="txt"><strong>PHOTO ZONE</strong><span>포토존</span></div>
                     </a>
                 </li>
                 <li>
-                    <a href="special.html?num=06">
+                    <a href="#">
                         <div class="img"><div></div></div>
-                        <div class="txt"><strong>BEACH</strong><span>인근 해변</span></div>
+                        <div class="txt"><strong>TRAVEL</strong><span>주변여행지</span></div>
                     </a>
                 </li>
             </ul>

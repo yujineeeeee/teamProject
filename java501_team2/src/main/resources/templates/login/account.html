@@ -86,138 +86,142 @@
 
 <body>
 <div th:replace="~{/layout/header :: headerNavbar}"></div>
-
-<div id="container">
-    <div class="jss19 jss8">
-        <div class="jss9">
-            <div class="jss12"></div>
-            <!-- 박스-->
-            <div class="jss11 jss17">
-                <div class="jss14 cardHeader">
-                    <div class="jss15"></div>
-                    <span class="jss18"></span>
-                </div>
-                <div class="jss16">
-                    <form class="jss1" novalidate="" autocomplete="off" data-gtm-form-interact-id="0"
-                          action="/account.do" method="post" id="insertForm">
-                        <div class="pageTitle">
-                            <div class="jss20"><h1 class="MuiTypography-root MuiTypography-h2">회원가입</h1></div>
-                            <div class="jss6">
-                                <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
-                                        <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
-                                            <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-                                                   data-shrink="false">이름</label>
-                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                <input aria-invalid="false" type="text" maxlength="10"
-                                                       class="MuiInputBase-input MuiOutlinedInput-input" value=""
-                                                       name="userName" id="userName">
-                                                <fieldset aria-hidden="true"
-                                                          class="jss37 MuiOutlinedInput-notchedOutline"
-                                                          style="padding-left: 21px;">
-                                                    <legend class="jss38" style="width: 0.01px;"><span>​</span></legend>
-                                                </fieldset>
+<section>
+    <div id="container">
+        <div class="jss19 jss8">
+            <div class="jss9">
+                <div class="jss12"></div>
+                <!-- 박스-->
+                <div class="jss11 jss17">
+                    <div class="jss14 cardHeader">
+                        <div class="jss15"></div>
+                        <span class="jss18"></span>
+                    </div>
+                    <div class="jss16">
+                        <form class="jss1" novalidate="" autocomplete="off" data-gtm-form-interact-id="0"
+                              action="/account.do" method="post" id="insertForm">
+                            <div class="pageTitle">
+                                <div class="jss20"><h1 class="MuiTypography-root MuiTypography-h2">회원가입</h1></div>
+                                <div class="jss6">
+                                    <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
+                                            <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
+                                                <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                                       data-shrink="false">이름</label>
+                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl">
+                                                    <input aria-invalid="false" type="text" maxlength="10"
+                                                           class="MuiInputBase-input MuiOutlinedInput-input" value=""
+                                                           name="userName" id="userName">
+                                                    <fieldset aria-hidden="true"
+                                                              class="jss37 MuiOutlinedInput-notchedOutline"
+                                                              style="padding-left: 21px;">
+                                                        <legend class="jss38" style="width: 0.01px;"><span>​</span>
+                                                        </legend>
+                                                    </fieldset>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="jss6">
-                                <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-6"><h3
-                                            class="MuiTypography-root MuiTypography-h3">회원 정보</h3></div>
-                                </div>
-                                <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8">
-                                        <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
-                                            <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-                                                   data-shrink="false">아이디</label>
-                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl">
-                                                <input aria-invalid="false" type="text" maxlength="15"
-                                                       class="MuiInputBase-input MuiOutlinedInput-input" value=""
-                                                       name="userId" id="userId">
-                                                <fieldset aria-hidden="true"
-                                                          class="jss37 MuiOutlinedInput-notchedOutline"
-                                                          style="padding-left: 25.5px;">
-                                                    <legend class="jss38" style="width: 0.01px;"><span>​</span></legend>
-                                                </fieldset>
+                                <div class="jss6">
+                                    <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-6"><h3
+                                                class="MuiTypography-root MuiTypography-h3">회원 정보</h3></div>
+                                    </div>
+                                    <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8">
+                                            <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
+                                                <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                                       data-shrink="false">아이디</label>
+                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl">
+                                                    <input aria-invalid="false" type="text" maxlength="15"
+                                                           class="MuiInputBase-input MuiOutlinedInput-input" value=""
+                                                           name="userId" id="userId">
+                                                    <fieldset aria-hidden="true"
+                                                              class="jss37 MuiOutlinedInput-notchedOutline"
+                                                              style="padding-left: 25.5px;">
+                                                        <legend class="jss38" style="width: 0.01px;"><span>​</span>
+                                                        </legend>
+                                                    </fieldset>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
 
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4">
-                                        <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined jss40 jss7 jss39 MuiButton-outlinedSecondary MuiButton-outlinedSizeLarge MuiButton-sizeLarge"
-                                                tabindex="0" type="button" id="myButton">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4">
+                                            <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined jss40 jss7 jss39 MuiButton-outlinedSecondary MuiButton-outlinedSizeLarge MuiButton-sizeLarge"
+                                                    tabindex="0" type="button" id="myButton">
 
                                             <span class="MuiButton-label">
                                                 <span> 아이디 중복확인</span> </span>
-                                            <span class="MuiTouchRipple-root"></span>
+                                                <span class="MuiTouchRipple-root"></span>
 
-                                        </button>
+                                            </button>
 
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
-                                        <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
-                                            <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-                                                   data-shrink="false">비밀번호</label>
-                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
-                                                <input aria-invalid="false" type="password" maxlength="15"
-                                                       class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-                                                       value="" name="userPass" id="userPass" oninput="pwCheck()">
-                                                <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
+                                    <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
+                                            <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
+                                                <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                                                       data-shrink="false">비밀번호</label>
+                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
+                                                    <input aria-invalid="false" type="password" maxlength="15"
+                                                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                                                           value="" name="userPass" id="userPass" oninput="pwCheck()">
+                                                    <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
 
+                                                    </div>
+                                                    <fieldset aria-hidden="true"
+                                                              class="jss37 MuiOutlinedInput-notchedOutline"
+                                                              style="padding-left: 30px;">
+                                                        <legend class="jss38" style="width: 0.01px;"><span>​</span>
+                                                        </legend>
+                                                    </fieldset>
                                                 </div>
-                                                <fieldset aria-hidden="true"
-                                                          class="jss37 MuiOutlinedInput-notchedOutline"
-                                                          style="padding-left: 30px;">
-                                                    <legend class="jss38" style="width: 0.01px;"><span>​</span></legend>
-                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                                Mui-error Mui-error 에러일때 class 추가 / label, div-->
+                                    <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                        <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
+                                            <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
+                                                <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined "
+                                                       data-shrink="false">비밀번호 확인</label>
+                                                <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary  MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
+                                                    <input aria-invalid="false" type="password" maxlength="15"
+                                                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                                                           value="" id="userPassCheck" oninput="pwCheck()">
+                                                    <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
+
+                                                    </div>
+                                                    <fieldset aria-hidden="true"
+                                                              class="jss37 MuiOutlinedInput-notchedOutline"
+                                                              style="padding-left: 40.5px;">
+                                                        <legend class="jss38" style="width: 0.01px;"><span>​</span>
+                                                        </legend>
+                                                    </fieldset>
+                                                </div>
+
+                                                <p class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
+                                                   id="pwCheckTxt">비밀번호 확인 항목을 입력해주세요.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!--                                Mui-error Mui-error 에러일때 class 추가 / label, div-->
-                                <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                                    <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8">
-                                        <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
-                                            <label class="MuiFormLabel-root MuiFormLabel-colorSecondary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined "
-                                                   data-shrink="false">비밀번호 확인</label>
-                                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary  MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
-                                                <input aria-invalid="false" type="password" maxlength="15"
-                                                       class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-                                                       value="" id="userPassCheck" oninput="pwCheck()">
-                                                <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
 
-                                                </div>
-                                                <fieldset aria-hidden="true"
-                                                          class="jss37 MuiOutlinedInput-notchedOutline"
-                                                          style="padding-left: 40.5px;">
-                                                    <legend class="jss38" style="width: 0.01px;"><span>​</span></legend>
-                                                </fieldset>
-                                            </div>
-
-                                            <p class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
-                                               id="pwCheckTxt">비밀번호 확인 항목을 입력해주세요.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <script>
-                                function pwCheck() {
-                                    if ($("#userPass").val() == $("#userPassCheck").val()) {
-                                        $("#pwCheckTxt").text("비밀번호가 일치합니다.").removeClass("Mui-error");
-                                    } else {
-                                        $("#pwCheckTxt").text("비밀번호가 맞지 않습니다.").addClass("Mui-error");
+                                <script>
+                                    function pwCheck() {
+                                        if ($("#userPass").val() == $("#userPassCheck").val()) {
+                                            $("#pwCheckTxt").text("비밀번호가 일치합니다.").removeClass("Mui-error");
+                                        } else {
+                                            $("#pwCheckTxt").text("비밀번호가 맞지 않습니다.").addClass("Mui-error");
+                                        }
                                     }
-                                }
-                            </script>
+                                </script>
 
-                            <div class="MuiFormGroup-root"><label class="MuiFormControlLabel-root jss60">
+                                <div class="MuiFormGroup-root"><label class="MuiFormControlLabel-root jss60">
                                 <span class="MuiButtonBase-root MuiIconButton-root jss61 MuiCheckbox-root MuiCheckbox-colorPrimary jss62 Mui-checked MuiIconButton-colorPrimary"
                                       aria-disabled="false">
                                  <span class="MuiIconButton-label">
@@ -229,48 +233,49 @@
               <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                   <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span>
                                 <span class="MuiTouchRipple-root"></span></span>
-                                <input type="checkbox" id="checkbox" style="display: none;"> <!-- 추가된 체크박스 -->
-                                <label for="checkbox"
-                                       class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">
-                                    동의합니다.</label>
-                            </label>
+                                    <input type="checkbox" id="checkbox" style="display: none;"> <!-- 추가된 체크박스 -->
+                                    <label for="checkbox"
+                                           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">
+                                        동의합니다.</label>
+                                </label>
 
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
-                            <!--                            <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-3">-->
-                            <button class="MuiButtonBase-root   jss40 jss39 MuiButton-containedPrimary "
-                                    tabindex="-1" type="submit" id="confirmButton">
-                                <span class="MuiButton-label"><span>확인</span></span>
-                            </button>
-                        </div>
+                            <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
+                                <!--                            <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-3">-->
+                                <button class="MuiButtonBase-root   jss40 jss39 MuiButton-containedPrimary "
+                                        tabindex="-1" type="submit" id="confirmButton">
+                                    <span class="MuiButton-label"><span>확인</span></span>
+                                </button>
+                            </div>
 
-                        <script>
-                            $("#confirmButton").click(function () {
-                                if ($.trim($("#userPass").val()) == '' || $.trim($("#userPassCheck").val()) == '') {
-                                    alert("비밀번호를 다시 입력해주세요");
-                                    return false;
-                                } else if ($.trim($("#userName").val()) == '') {
-                                    alert("이름을 입력해주세요.");
-                                    return false;
-                                } else if ($.trim($("#userId").val()) == '') {
-                                    alert("아이디를 입력 해주세요 ");
-                                    return false;
-                                }
-                                $("#insertForm").submit();
-                            });
-                        </script>
+                            <script>
+                                $("#confirmButton").click(function () {
+                                    if ($.trim($("#userPass").val()) == '' || $.trim($("#userPassCheck").val()) == '') {
+                                        alert("비밀번호를 다시 입력해주세요");
+                                        return false;
+                                    } else if ($.trim($("#userName").val()) == '') {
+                                        alert("이름을 입력해주세요.");
+                                        return false;
+                                    } else if ($.trim($("#userId").val()) == '') {
+                                        alert("아이디를 입력 해주세요 ");
+                                        return false;
+                                    }
+                                    $("#insertForm").submit();
+                                });
+                            </script>
 
 
-                        <!--                        </div>-->
-                    </form>
+                            <!--                        </div>-->
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
         </div>
     </div>
-</div>
+</section>
 
 
 <script id="step" type="application/json"></script>

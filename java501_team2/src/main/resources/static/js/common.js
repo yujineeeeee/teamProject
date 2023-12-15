@@ -22,7 +22,7 @@ $(function(){
 //                                                                              혹시 몰라 주석처리하였음.
         $("header hgroup div ul").eq(1).find("li").removeClass("on");
         $("header hgroup div ul").eq(1).find("li").eq(i).addClass("on");
-
+//
         $("#snb div ul").eq(1).find("li").removeClass("on");
         $("#snb div ul").eq(1).find("li").eq(i).addClass("on");
 

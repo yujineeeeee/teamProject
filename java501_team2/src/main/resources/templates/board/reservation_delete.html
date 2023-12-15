@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/css/reservation.css">
 
 
     <link rel="stylesheet"
@@ -29,7 +28,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-
+    <link rel="stylesheet" href="/css/reservation.css">
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
@@ -42,12 +41,11 @@
     <script type="text/javascript" src="js/common.js" defer=""></script>
 
 
-    <!-- analytics -->
-    <!-- //analytics -->
 </head>
 
 <body id="reserve" class="tables">
-<div th:replace="~{layout/header :: headerNavbar}"></div>
+
+<div th:replace="~{/layout/header :: headerNavbar}"></div>
 
 <section>
     <div class="section banner" id="Banner">
@@ -184,7 +182,7 @@
                                             <!--                                            201호 인원수 설정-->
                                             <div class="jss32">
                                                 <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
-                                                    <span>인원수</span>
+                                                    <span>성인</span>
                                                     <div class="jss126 jss33">
                                                         <button class="jss127" id="minus_btn1">
                                                             <svg class="MuiSvgIcon-root" focusable="false"
@@ -207,19 +205,16 @@
                                                             </button>
                                                         </div>
                                                         <div class="jss129"></div>
-                                                    </div>
 
+                                                    </div>
 
                                                     <script>
                                                         const minusBtn = document.getElementById('minus_btn1');
                                                         const addBtn = document.getElementById('add_btn1');
                                                         const quantityField = document.getElementById('quantityField');
-                                                        const reservationForm = document.getElementById('reservationForm');
-                                                        const reservationButton = document.getElementById('room-164645');
 
                                                         // 감소 함수
-                                                        minusBtn.addEventListener('click', function (event) {
-                                                            event.preventDefault(); // 기본 동작 막기
+                                                        minusBtn.addEventListener('click', function () {
                                                             let currentValue = parseInt(quantityField.value);
                                                             if (!isNaN(currentValue) && currentValue > 0) {
                                                                 currentValue--;
@@ -228,8 +223,7 @@
                                                         });
 
                                                         // 증가 함수
-                                                        addBtn.addEventListener('click', function (event) {
-                                                            event.preventDefault(); // 기본 동작 막기
+                                                        addBtn.addEventListener('click', function () {
                                                             let currentValue = parseInt(quantityField.value);
                                                             if (!isNaN(currentValue)) {
                                                                 currentValue++;
@@ -238,15 +232,121 @@
                                                         });
                                                     </script>
                                                 </div>
+
+
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>아동</span>
+                                                    <div class="jss126 jss33" id="quantityContainer">
+                                                        <button class="jss127" id="decreaseChild">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명"
+                                                                   id="childQuantityField">
+                                                            <button class="jss127" id="increaseChild">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const decreaseChildBtn = document.getElementById('decreaseChild');
+                                                    const increaseChildBtn = document.getElementById('increaseChild');
+                                                    const childQuantityField = document.getElementById('childQuantityField');
+
+                                                    decreaseChildBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(childQuantityField.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            childQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+
+                                                    increaseChildBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(childQuantityField.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            childQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+                                                </script>
+
+
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>유아</span>
+                                                    <div class="jss126 jss33" id="toddlerQuantityContainer">
+                                                        <button class="jss127" id="decreaseToddler">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명"
+                                                                   id="toddlerQuantityField">
+                                                            <button class="jss127" id="increaseToddler">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const decreaseToddlerBtn = document.getElementById('decreaseToddler');
+                                                    const increaseToddlerBtn = document.getElementById('increaseToddler');
+                                                    const toddlerQuantityField = document.getElementById('toddlerQuantityField');
+
+                                                    decreaseToddlerBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(toddlerQuantityField.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            toddlerQuantityField.value = currentValue + ' 명';
+
+                                                            $("#room-164646").val("201 츠키 (POOL, 히노끼), " + currentValue);
+                                                        }
+                                                    });
+
+                                                    increaseToddlerBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(toddlerQuantityField.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            toddlerQuantityField.value = currentValue + ' 명';
+                                                        }
+
+
+                                                    });
+                                                </script>
                                             </div>
 
 
                                             <!--                                            201호 선택버튼-->
                                             <div class="jss34">
                                                 <div class="jss35">
-<!--                                                    <input type="checkbox" id="room-164646" name="reservationRoomType1" class="jss36" value="201 츠키 (POOL, 히노끼)">-->
-                                                    <input type="hidden"
-                                                    <input type="checkbox" id="room-164646" name="reservationRoomType1" class="jss36" value="201 츠키 (POOL, 히노끼)">
+                                                    <input type="checkbox" id="room-164646"
+                                                           name="reservationRoomType1"
+                                                           class="jss36" value="">
                                                     <label for="room-164646" class="jss37 selectItemLabel">
                                                         <svg class="MuiSvgIcon-root" focusable="false"
                                                              viewBox="0 0 24 24"
@@ -285,7 +385,7 @@
                                             <!--                                            202호 인원수 설정-->
                                             <div class="jss32">
                                                 <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
-                                                    <span>인원수</span>
+                                                    <span>성인</span>
                                                     <div class="jss126 jss33">
                                                         <button class="jss127" id="minus_btn2">
                                                             <svg class="MuiSvgIcon-root" focusable="false"
@@ -297,7 +397,7 @@
                                                         <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
                                                             <input autocomplete="off" type="text"
                                                                    class="MuiInputBase-input MuiInput-input jss132"
-                                                                   value="0" id="quantityField2"> <!-- 변경된 부분 -->
+                                                                   value="0 명" id="quantityField2">
                                                             <button class="jss127" id="add_btn2">
                                                                 <svg class="MuiSvgIcon-root" focusable="false"
                                                                      viewBox="0 0 24 24"
@@ -307,33 +407,129 @@
                                                             </button>
                                                         </div>
                                                         <div class="jss129"></div>
+
                                                     </div>
                                                 </div>
+
                                                 <script>
                                                     const minusBtn2 = document.getElementById('minus_btn2');
                                                     const addBtn2 = document.getElementById('add_btn2');
                                                     const quantityField2 = document.getElementById('quantityField2');
 
-                                                    // 감소 함수
-                                                    minusBtn2.addEventListener('click', function (event) {
-                                                        event.preventDefault();
+                                                    minusBtn2.addEventListener('click', function () {
                                                         let currentValue = parseInt(quantityField2.value);
                                                         if (!isNaN(currentValue) && currentValue > 0) {
                                                             currentValue--;
-                                                            quantityField2.value = currentValue;
+                                                            quantityField2.value = currentValue + ' 명';
                                                         }
                                                     });
 
-                                                    // 증가 함수
-                                                    addBtn2.addEventListener('click', function (event) {
-                                                        event.preventDefault();
+                                                    addBtn2.addEventListener('click', function () {
                                                         let currentValue = parseInt(quantityField2.value);
                                                         if (!isNaN(currentValue)) {
                                                             currentValue++;
-                                                            quantityField2.value = currentValue;
+                                                            quantityField2.value = currentValue + ' 명';
+                                                        }
+                                                    });
+                                                </script>
+
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>아동</span>
+                                                    <div class="jss126 jss33">
+                                                        <button class="jss127" id="minus_child_btn">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명" id="childQuantityField2">
+                                                            <button class="jss127" id="add_child_btn">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const minusChildBtn = document.getElementById('minus_child_btn');
+                                                    const addChildBtn = document.getElementById('add_child_btn');
+                                                    const childQuantityField2 = document.getElementById('childQuantityField2');
+
+                                                    minusChildBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(childQuantityField2.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            childQuantityField2.value = currentValue + ' 명';
                                                         }
                                                     });
 
+                                                    addChildBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(childQuantityField2.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            childQuantityField2.value = currentValue + ' 명';
+                                                        }
+                                                    });
+                                                </script>
+
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>유아</span>
+                                                    <div class="jss126 jss33">
+                                                        <button class="jss127" id="minus_toddler_btn">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명" id="toddlerQuantityField3">
+                                                            <button class="jss127" id="add_toddler_btn">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const minusToddlerBtn = document.getElementById('minus_toddler_btn');
+                                                    const addToddlerBtn = document.getElementById('add_toddler_btn');
+                                                    const toddlerQuantityField3 = document.getElementById('toddlerQuantityField3');
+
+                                                    minusToddlerBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(toddlerQuantityField3.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            toddlerQuantityField3.value = currentValue + ' 명';
+                                                        }
+                                                    });
+
+                                                    addToddlerBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(toddlerQuantityField3.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            toddlerQuantityField3.value = currentValue + ' 명';
+                                                        }
+                                                    });
                                                 </script>
                                             </div>
 
@@ -374,7 +570,7 @@
                                             <!--                                            401호, 402호 설명창-->
                                             <div class="jss30 itemInfo"><span class="jss137 jss135 jss134 jss147"><i
                                                     class="jss136">예약가능</i></span>
-                                                <div class="jss31 itemTitle">401호, 402호 (스파, 복층)</div>
+                                                <div class="jss31 itemTitle">401호 (스파, 복층)</div>
                                                 <div class="itemDetail">
                                                     <div>기준 2명</div>
                                                     <div>원룸형 / 19평</div>
@@ -385,7 +581,7 @@
                                             <!--                                            401호, 402호 인원수 설정-->
                                             <div class="jss32">
                                                 <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
-                                                    <span>인원수</span>
+                                                    <span>성인</span>
                                                     <div class="jss126 jss33">
                                                         <button class="jss127" id="adult_minus_btn">
                                                             <svg class="MuiSvgIcon-root" focusable="false"
@@ -415,12 +611,8 @@
                                                     const minusAdultBtn = document.getElementById('adult_minus_btn');
                                                     const addAdultBtn = document.getElementById('adult_add_btn');
                                                     const adultQuantityField = document.getElementById('adultQuantityField');
-                                                    const reservationForm3 = document.getElementById('reservationForm3');
-                                                    const reservationButton3 = document.getElementById('room-164647');
 
-                                                    // 감소 함수
-                                                    minusAdultBtn.addEventListener('click', function (event) {
-                                                        event.preventDefault(); // 기본 동작 막기
+                                                    minusAdultBtn.addEventListener('click', function () {
                                                         let currentValue = parseInt(adultQuantityField.value);
                                                         if (!isNaN(currentValue) && currentValue > 0) {
                                                             currentValue--;
@@ -428,35 +620,127 @@
                                                         }
                                                     });
 
-                                                    // 증가 함수
-                                                    addAdultBtn.addEventListener('click', function (event) {
-                                                        event.preventDefault(); // 기본 동작 막기
+                                                    addAdultBtn.addEventListener('click', function () {
                                                         let currentValue = parseInt(adultQuantityField.value);
-
                                                         if (!isNaN(currentValue)) {
                                                             currentValue++;
                                                             adultQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+                                                </script>
 
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>아동</span>
+                                                    <div class="jss126 jss33">
+                                                        <button class="jss127" id="kid_minus_btn">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명" id="kidQuantityField">
+                                                            <button class="jss127" id="kid_add_btn">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const minusKidBtn = document.getElementById('kid_minus_btn');
+                                                    const addKidBtn = document.getElementById('kid_add_btn');
+                                                    const kidQuantityField = document.getElementById('kidQuantityField');
+
+                                                    minusKidBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(kidQuantityField.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            kidQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+
+                                                    addKidBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(kidQuantityField.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            kidQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+                                                </script>
+
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center">
+                                                    <span>유아</span>
+                                                    <div class="jss126 jss33">
+                                                        <button class="jss127" id="baby_minus_btn">
+                                                            <svg class="MuiSvgIcon-root" focusable="false"
+                                                                 viewBox="0 0 24 24"
+                                                                 aria-hidden="true" role="presentation">
+                                                                <path d="M19 13H5v-2h14v2z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="MuiInputBase-root MuiInput-root MuiInputBase-colorSecondary MuiInput-colorSecondary jss128">
+                                                            <input autocomplete="off" type="text"
+                                                                   class="MuiInputBase-input MuiInput-input jss132"
+                                                                   value="0 명" id="babyQuantityField">
+                                                            <button class="jss127" id="baby_add_btn">
+                                                                <svg class="MuiSvgIcon-root" focusable="false"
+                                                                     viewBox="0 0 24 24"
+                                                                     aria-hidden="true" role="presentation">
+                                                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="jss129"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <script>
+                                                    const minusBabyBtn = document.getElementById('baby_minus_btn');
+                                                    const addBabyBtn = document.getElementById('baby_add_btn');
+                                                    const babyQuantityField = document.getElementById('babyQuantityField');
+
+                                                    minusBabyBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(babyQuantityField.value);
+                                                        if (!isNaN(currentValue) && currentValue > 0) {
+                                                            currentValue--;
+                                                            babyQuantityField.value = currentValue + ' 명';
+                                                        }
+                                                    });
+
+                                                    addBabyBtn.addEventListener('click', function () {
+                                                        let currentValue = parseInt(babyQuantityField.value);
+                                                        if (!isNaN(currentValue)) {
+                                                            currentValue++;
+                                                            babyQuantityField.value = currentValue + ' 명';
                                                         }
                                                     });
                                                 </script>
                                             </div>
 
 
-                                            <!--                                            401, 402호 선택 버튼-->
+                                            <!--                                            401호 선택 버튼-->
                                             <div class="jss34">
                                                 <div class="jss35"><input type="checkbox" id="room-164650"
                                                                           name="reservationRoomType3"
-                                                                          class="jss36" value="401호, 402호 (스파, 복층)">
-                                                    <label
-                                                            for="room-164650"
-                                                            class="jss37 selectItemLabel">
-                                                        <svg class="MuiSvgIcon-root" focusable="false"
-                                                             viewBox="0 0 24 24"
-                                                             aria-hidden="true" role="presentation">
-                                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
-                                                        </svg>
-                                                        <span>선택</span></label></div>
+                                                                          class="jss36" value="401 (스파, 복층)"><label
+                                                        for="room-164650"
+                                                        class="jss37 selectItemLabel">
+                                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                                         aria-hidden="true" role="presentation">
+                                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                                                    </svg>
+                                                    <span>선택</span></label></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -525,6 +809,10 @@
             </div>
         </div>
     </div>
-
-    <div th:replace="~{layout/footer :: footer}"></div>
+    </div>
 </section>
+</body>
+</section>
+
+
+</body></html>

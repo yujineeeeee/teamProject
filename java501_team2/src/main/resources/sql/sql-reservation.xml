@@ -7,7 +7,7 @@
 
     <insert id="insertReservation" parameterType="com.bitc.java501_team2.dto.ReservationDto">
         insert into reservation(reservation_id, reservation_name, reservation_date, reservation_room_type1, reservation_room_type2, reservation_room_type3, reservation_person_cnt, check_in_date, check_out_date)
-        values ('test27', '테스터1',  NOW(), #{reservationRoomType1}, #{reservationRoomType2}, #{reservationRoomType3}, '333명', #{checkInDate}, #{checkOutDate})
+        values ('test91354684', '테스터1',  NOW(), #{reservationRoomType1}, #{reservationRoomType2}, #{reservationRoomType3}, '333명', #{checkInDate}, #{checkOutDate})
     </insert>
 
 </mapper>

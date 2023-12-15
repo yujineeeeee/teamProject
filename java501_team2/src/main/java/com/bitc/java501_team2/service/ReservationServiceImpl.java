@@ -22,9 +22,6 @@ public class ReservationServiceImpl implements ReservationService {
     public void insertReservation(ReservationDto reservation) throws Exception {
         //    mapper를 사용하여 데이터 베이스에 글 등록
         reservationMapper.insertReservation(reservation);
-
-
-
     }
 
 }

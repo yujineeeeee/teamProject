@@ -686,3 +686,33 @@ function videoScale(control){
     control.style.width = Math.round($(window).height() / 9 * 16) + "px";
     control.style.height = Math.round($(window).width() / 16 * 9) + "px";
 }
+
+// -----------------------------location 사진 funciton-----------------------------------
+let currentImageIndex = 1;
+
+function showImage(index) {
+    const images = [
+        '/images/infoImage/1.jpg',
+        '/images/infoImage/2.jpg',
+        '/images/infoImage/3.jpg',
+        '/images/infoImage/4.jpg',
+        '/images/infoImage/5.jpg',
+        '/images/infoImage/6.jpg',
+        '/images/infoImage/7.jpg',
+        '/images/infoImage/8.jpg'
+    ];
+
+    currentImageIndex += index;
+
+    if (currentImageIndex < 1) {
+        currentImageIndex = images.length;
+    } else if (currentImageIndex > images.length) {
+        currentImageIndex = 1;
+    }
+
+    document.getElementById('galleryImage').src = images[currentImageIndex - 1];
+}
+
+function changeImage(index) {
+    showImage(index);
+}

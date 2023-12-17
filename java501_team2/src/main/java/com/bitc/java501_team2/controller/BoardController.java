@@ -2,8 +2,10 @@ package com.bitc.java501_team2.controller;
 
 import com.bitc.java501_team2.dto.NoticeDto;
 import com.bitc.java501_team2.dto.ReservationDto;
+import com.bitc.java501_team2.dto.ReviewDto;
 import com.bitc.java501_team2.service.NoticeService;
 import com.bitc.java501_team2.service.ReservationService;
+import com.bitc.java501_team2.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,11 @@ public class BoardController {
 
     @Autowired
     private NoticeService noticeService;
+
+    @Autowired
+    private ReviewService reviewService;
+
+
 
     @RequestMapping("/")
     public String index() throws Exception {
@@ -122,6 +129,44 @@ public class BoardController {
 //        Service를 사용하여 데이터 베이스의 내용 삭제
         noticeService.NoticeDeleteBoard(noticeNum);
         return "redirect:/not.do";
+    }
+
+    //    ------------------------------------------- 리뷰 ---------------------------------------------------------
+    @RequestMapping(value = "/reviewList.do", method = RequestMethod.GET)
+    public ModelAndView selectReviewList() throws Exception {
+
+        ModelAndView mv = new ModelAndView("board/reviewList");
+
+        List<ReviewDto> reviewList = (List<ReviewDto>) reviewService.selectReviewList();
+        mv.addObject("reviewList", reviewList);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/reviewList.do", method = RequestMethod.POST)
+    public String ReviewProcess(ReviewDto review) throws Exception {
+        reviewService.insertReview(review);
+
+        return "redirect:/main.do";
+    }
+
+    @RequestMapping("/board/insertReview.do")
+    public String insertReview(ReviewDto review) throws Exception {
+        reviewService.insertReview(review);
+
+        return "redirect:/reviewList.do";
+    }
+
+
+//    ----------------------테스트
+    @GetMapping("/popupTest")
+    public String popupTest() throws  Exception{
+        return "popup/popupTest";
+    }
+
+    @GetMapping("/popup")
+    public String popup() throws  Exception{
+        return "popup/popup";
     }
 
 

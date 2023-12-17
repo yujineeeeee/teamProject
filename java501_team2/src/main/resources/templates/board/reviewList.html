@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;display=swap&amp;subset=korean"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--    <link rel="stylesheet" href="/css/base.css">-->
+    <link rel="icon" href="/images/favicon.ico">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+    <script async="" src="//fs.bizspring.net/fs4/logger.v4.1.js"></script>
+    <script type="text/javascript" defer="" src="//log1.toup.net/mirae_response_load.php?k=rkzbn"></script>
+    <script async="" src="//fs.bizspring.net/fs4/bstrk.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/modify.js" defer=""></script>
+<!--    <script type="text/javascript" src="/js/reserve.js" defer=""></script>-->
+    <script type="text/javascript" src="/js/common.js" defer=""></script>
+</head>
+<body id="community" class="tables">
+<div th:replace="~{layout/header :: headerNavbar}"></div>
+
+<section>
+    <div class="section banner" id="Banner">
+        <div class="InBox">
+            <h2 class="ttls">
+                <div></div>
+                <span> CHECK THE&nbsp;<b>REVIEWS</b></span>
+                <strong>REVIEW</strong>
+            </h2>
+        </div>
+    </div>
+
+    <div class="section contents">
+        <div style="height: 50px;"></div>
+        <div class="frame">
+            <h3>
+                <strong>고객 리뷰</strong>
+                <span>방문 후기를 작성해주세요.</span>
+            </h3>
+            <br>
+        </div>
+    </div>
+
+<!--    <div style="height: 2000px" class="bg-dark mt-4"></div>-->
+    <div class="container mt-2">
+        <div style="height: 50px">
+            <div class="row">
+                <div class="col-sm">
+                    <table class="table table-hover table-striped">
+                        <colgroup>
+                            <col style="width: 10%">
+                            <col style="width: 5%">
+                            <col style="width: 5%">
+                            <col style="width: 60%">
+                            <col style="width: 15%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>아이디</th>
+                            <th>평점</th>
+                            <th>리뷰</th>
+                            <th>작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:if="${#lists.size(reviewList)} > 0" th:each="item : ${reviewList}">
+                            <td th:text="${item.reviewNum}"></td>
+                            <td th:text="${item.reviewId}"></td>
+                            <td th:text="${item.reviewStar}"></td>
+                            <td th:text="${item.reviewContent}" class="text-decoration-none"></td>
+                            <td th:text="${item.reviewPostdate}"></td>
+                        </tr>
+                        <tr th:unless="${#lists.size(reviewList)} > 0 ">
+                            <td colspan="4">조회된 결과가 없습니다.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div><!--리뷰쓰기 하는 곳-->
+                <form id="reviewForm" action="board/insertReview.do" method="post">
+                    <!-- 리뷰 별점 부분 -->
+                    <div class="reviewStar">
+                        <input type="radio" id="star5" name="reviewStar" value="⭐️⭐️⭐️⭐️⭐️"/>
+                        <label for="star5" title="5 stars">⭐️⭐️⭐️⭐️⭐️</label>
+                        <br>
+                        <input type="radio" id="star4" name="reviewStar" value="⭐️⭐️⭐️⭐️"/>
+                        <label for="star4" title="4 stars">⭐️⭐️⭐️⭐️</label>
+                        <br>
+                        <input type="radio" id="star3" name="reviewStar" value="⭐️⭐️⭐️"/>
+                        <label for="star3" title="3 stars">⭐️⭐️⭐️</label>
+                        <br>
+                        <input type="radio" id="star2" name="reviewStar" value="⭐️⭐️"/>
+                        <label for="star2" title="2 stars">⭐️⭐️</label>
+                        <br>
+                        <input type="radio" id="star1" name="reviewStar" value="⭐️"/>
+                        <label for="star1" title="1 star">⭐️</label>
+                    </div>
+
+
+                    <div class="mt-3"> <!--사용자 입력란-->
+                        <label for="reviewBox" class="form-label"></label>
+                        <textarea class="form-control" id="reviewBox" name="reviewContent" rows="5"
+                                  placeholder="리뷰를 작성해 주세요"></textarea>
+                    </div>
+
+                    <!--등록 취소 버튼-->
+                    <div class="mt-3">
+                        <div class="col-sm d-grid">
+                            <button type="submit" class="btn btn-primary">등록</button>
+                        </div>
+                        <div class="col-sm d-grid">
+                            <button type="reset" class="btn btn-secondary" id="btn-cancle">취소</button>
+                        </div>
+                    </div>
+                </form>
+                <script>
+                    document.getElementById('reviewForm').addEventListener('submit', function (event) {
+                        var stars = document.querySelectorAll('.reviewStar input[type="radio"]');
+                        var checked = Array.prototype.slice.call(stars).some(function (el) {
+                            return el.checked;
+                        });
+
+                        var reviewContent = document.getElementById('reviewBox').value.trim();
+
+                        if (!checked) {
+                            alert('별점을 통해 평가를 부탁드립니다');
+                            event.preventDefault(); // 폼 제출 방지
+                        } else if (reviewContent === '') {
+                            alert('리뷰를 입력하세요.');
+                            event.preventDefault(); // 폼 제출 방지
+                        } else {
+                            alert('리뷰가 등록되었습니다.')
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

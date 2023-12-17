@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.gallery-container {
+    position: relative;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s; /* 부드러운 전환을 위한 트랜지션 설정 */
+}
+
+#prevBtn {
+    right: -10px;
+    bottom: 72px;
+    margin-left: 5px; /* 왼쪽 마진 추가 */
+}
+
+#nextBtn {
+    right: 40px;
+    bottom: 72px;
+    margin-left: 5px; /* 왼쪽 마진 추가 */
+}
+
+#prevBtn::before{
+    content: url('/images/about_prev.jpg'); /* 이전 버튼 이미지 경로 */
+}
+#nextBtn::before {
+    content: url('/images/about_next.jpg'); /* 이전 버튼 이미지 경로 */
+}
+
+#galleryImage {
+    max-width: 100%;
+    max-height: 70vh;
+    margin: auto;
+    display: block;
+}
+
+/* 미디어 쿼리 추가 */
+@media screen and (max-width: 600px) {
+    button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    #prevBtn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 10px;
+        margin-left: 5px; /* 왼쪽 마진 추가 */
+    }
+
+    #nextBtn {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 10px;
+        margin-left: 5px; /* 왼쪽 마진 추가 */
+    }
+}
+
+@media screen and (min-width: 601px) {
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}

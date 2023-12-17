@@ -22,8 +22,7 @@
     <script type="text/javascript" src="js/swiper.js" defer=""></script>
     <script type="text/javascript" src="js/common.js" defer=""></script>
 
-    <!-- analytics -->
-    <!-- //analytics -->
+    <link rel="stylesheet" href="/css/location.css">
 </head>
 
 <body id="about" class="about">
@@ -37,8 +36,10 @@
                 <div></div><span> ABOUT OUR<b>SPA&nbsp;POOLVILLA</b></span>
                 <strong>OCEANVIEW SOLSPA</strong>
             </h2>
+
             <div class="MyFrame">
-                <iframe src="https://player.vimeo.com/video/657710148?autoplay=1&loop=1&background=1" id="MyVideo" width="100%" height="100%" frameborder="0" allowfullscreen style="width: 1694px; height: 1070px;" data-ready="true"></iframe>
+                <iframe src="https://player.vimeo.com/video/657710148?autoplay=1&amp;loop=1&amp;background=1" id="MyVideo" width="100%" height="100%" frameborder="0" allowfullscreen="" data-ready="true" style="width: 1694px; height: 1430px;">
+                </iframe>
             </div>
         </div>
     </div>
@@ -55,17 +56,15 @@
         </div>
 
         <div class="section Swipers cont01">
-            <div class="swiper-view">
-                <div class="InBox">
-                    <div class="swiper-container swiper">
-                        <div class="swiper-wrapper swiper-image"></div>
-                        <div class="swiper-button-next swiper-btn"></div>
-                        <div class="swiper-button-prev swiper-btn"></div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
+            <div class="gallery-container">
+                <img id="galleryImage" src="/images/infoImage/1.jpg" alt="갤러리 이미지">
+                <button id="prevBtn" onclick="changeImage(-1)"></button>
+                <button id="nextBtn" onclick="changeImage(1)"></button>
             </div>
+            <script src="script.js"></script>
         </div>
+
+
         <div class="section cont02" id="location" name="location">
             <div class="title">
                 <h3>LOCATION</h3>

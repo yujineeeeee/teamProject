@@ -43,6 +43,7 @@
 				<li><a href="/not.do"><span class="en">NOTICE</span><span class="ko">공지사항</span></a></li>
 				<li><a href=""><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
 				<li><a href="/location.do#location"><span class="en">LOCATION</span><span class="ko">오시는 길</span></a></li>
+				<li><a href="/reviewList.do"><span class="en">REVIEW</span><span class="ko">숙소 리뷰</span></a></li>
 			</ul>
 			<ul>
 				<li><a href="/room201.do"><span class="en">ROOMS</span><span class="ko">객실안내</span></a></li>
@@ -113,7 +114,7 @@
 					<span>LOGIN</span>
 					<strong>로그인</strong>
 				</h4>
-				<img src="/images/logo.jpg" width="30%" height="auto" alt="">
+				<img src="/images/logo.jpg" width="150px" height="auto" alt="">
 			</div>
 			<div th:if="${session.userId} == null">
 				<ul>
@@ -139,6 +140,12 @@
 			});
 		</script>
 	</nav>
+
+	<div class="rvbtn">
+		<a href="/popup/cvd" target="_blank">
+			<img src="/images/covid.png" width="83" height="208" alt="">
+		</a>
+	</div>
 </header>
 </body>
 </html>

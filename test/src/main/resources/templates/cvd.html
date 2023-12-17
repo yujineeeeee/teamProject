@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+
+        /* Style the table header */
+        .table th {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Style the table rows */
+        .table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Style alternate rows for better readability */
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Style the "No Data" message */
+        .no-data {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+
+        .table-wrapper {
+            border: 1px solid #ddd; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide the border-radius overflow */
+            margin-top: 20px;
+        }
+
+        /* Add some basic styling to the table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0rem;
+        }
+
+        /* Style the table header */
+        .table th {
+            background-color: #f7f7f7; /* Adjusted color for the header */
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Style the table rows */
+        .table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Style alternate rows for better readability */
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Style the "No Data" message */
+        .no-data {
+            text-align: center;
+            padding: 10px;
+            background-color: #f7f7f7; /* Match the header color */
+        }
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header styling */
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Search input and button styling */
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        /* Table styling */
+        .table-wrapper {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f7f7f7;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* No Data message styling */
+        .no-data {
+            text-align: center;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Button styling */
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border: 1px solid #0056b3;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 767px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn-search-json").on("click", function () {
+                const targetDate = $("#target-date").val();
+
+                $("#btn-search-json").addClass("d-none");
+                $("#btn-loading").removeClass("d-none");
+
+                $.ajax({
+                    url: "/CVDXml",
+                    type: "POST",
+                    data: {targetDt: targetDate},
+                    success: function (data) {
+                        $("#btn-search-json").removeClass("d-none");
+                        $("#btn-loading").addClass("d-none");
+
+                        const tbody = $("#tbl-dailyboxoffice-json > tbody");
+                        tbody.empty();
+
+                        let tag = "";
+
+                        if (data.length > 0) {
+                            for (let i = 0; i < data.length; i++) {
+                                tag += "<tr>";
+                                tag += "<td>" + data[i].gubun + "</td>";
+                                tag += "<td>" + data[i].incDec + "</td>";
+                                tag += "<td>" + data[i].isolClearCnt + "</td>";
+                                tag += "<td>" + data[i].isolIngCnt + "</td>";
+                                tag += "<td>" + data[i].localOccCnt + "</td>";
+                                tag += "<td>" + data[i].stdDay + "</td>";
+                                tag += "</tr>";
+                            }
+                        } else {
+                            tag = "<tr>";
+                            tag += "<td colspan='5' class='text-center'>데이터가 없습니다.</td>"
+                            tag += "</tr>";
+                        }
+                        tbody.append(tag);
+                    },
+                    error: function () {
+                        alert("통신 중 오류가 발생했습니다.");
+                    }
+                });
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="container mt-5">
+    <h3 class="text-center">코로나 현황</h3>
+    <div class="d-flex justify-content-end">
+        <div class="row g-2">
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <span class="input-group-text">날짜 검색</span>
+                    <input type="text" class="form-control" id="target-date" value=""
+                           placeholder="년도-월-일">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary" id="btn-search-json">조회</button>
+                <button class="btn btn-primary d-none" type="button" id="btn-loading" disabled>
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span class="visually-hidden" role="status">Loading...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="table-wrapper">
+                <table class="table table-hover table-striped" id="tbl-dailyboxoffice-json">
+            <thead>
+            <tr>
+                <th>시도명</th>
+                <th>전일대비확진자증감수</th>
+                <th>누적격리해제수</th>
+                <th>격리중환자수</th>
+                <th>지역발생수</th>
+                <th>기준일자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use th:each to iterate through the items -->
+            <tr th:if="${#lists.size(cvdlist)} > 0" th:each="item : ${cvdlist}">
+                <td th:text="${item.gubun}">시도명</td>
+                <td th:text="${item.incDec}">전일대비확진자증감수</td>
+                <td th:text="${item.isolClearCnt}">누적격리해제수</td>
+                <td th:text="${item.isolIngCnt}">격리중환자수</td>
+                <td th:text="${item.localOccCnt}">지역발생수</td>
+                <td th:text="${item.stdDay}">기준일자</td>
+            </tr>
+            <!-- Display a message if there is no data -->
+            <tr th:unless="${#lists.size(cvdlist)} > 0">
+                <td colspan="6" class="no-data">데이터가 없습니다.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="height: 50px"></div>
+</div>
+
+</body>
+</html>

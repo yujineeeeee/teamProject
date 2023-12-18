@@ -33,7 +33,7 @@
     WHERE notice_num = #{noticeNum}
     </update>
 
-    <update id="NoticeDeleteBoard" parameterType="int">
-        update notice set  notice_deleted_yn = 'Y' WHERE notice_num= #{noticeNum}
-    </update>
+    <select id="adminCheck" resultType="int" parameterType="String">
+
+    </select>
 </mapper>

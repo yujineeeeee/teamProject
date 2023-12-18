@@ -8,10 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface ReviewMapper {
+    List<ReviewDto> selectReviewList() throws Exception;
 
-    public List<ReviewDto> selectReviewList() throws Exception;
+    void deleteReview(String reviewNum) throws Exception;
 
-    public void insertReview(ReviewDto review)throws Exception;
-
-    ReviewDto selectReviewDetail(int reviewNum) throws Exception;
+    void insertReview(ReviewDto review) throws Exception;
 }

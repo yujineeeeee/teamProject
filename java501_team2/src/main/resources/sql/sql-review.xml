@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- mybatis sql쿼리 mapping 파일임을 나타내는 구문 -->
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
 <mapper namespace="com.bitc.java501_team2.mapper.ReviewMapper">
-
     <select id="selectReviewList" resultType="com.bitc.java501_team2.dto.ReviewDto">
         select
         review_num,
@@ -18,20 +16,23 @@
         review
         where
         review_deleted_yn = 'N'
-        order by review_num DESC
+        order by
+        review_num DESC
     </select>
 
-    <!--정보 불러오기-->
-    <select id="selectReviewDetail" parameterType="int" resultType="com.bitc.java501_team2.dto.ReviewDto">
-        select review_num, review_id, review_star, review_postdate, review_content
-        from review
-        where review_num = #{reviewNum}
-    </select>
+<!--    정보 삭제하기 -->
+    <update id="deleteReview" parameterType="String">
+        UPDATE review
+        SET review_deleted_yn = 'Y'
+        WHERE review_num = #{reviewNum}
+    </update>
 
     <!--    정보 삽입하기-->
     <insert id="insertReview" parameterType="com.bitc.java501_team2.dto.ReviewDto">
-        insert into review (review_star, review_content, review_id, review_postdate)
-        values (#{reviewStar}, #{reviewContent}, 'test2', now())
+        insert into
+        review (review_star, review_content, review_id, review_postdate)
+        values
+        (#{reviewStar}, #{reviewContent}, 'test2', now());
     </insert>
 </mapper>
 

@@ -25,16 +25,10 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeMapper.selectBoardDetail(boardNum);
     }
 
-    //     공지사항 수정날짜 조회
-//    @Override
-//    public  NoticeDto selectBoardDetail(String noticeUpdateDate) throws Exception {
-//
-//    }
-
 
 //     공지사항 글쓰기
     @Override
-    public void NoticeInsertBoard(NoticeDto board, MultipartHttpServletRequest multipart) throws Exception {
+    public void NoticeInsertBoard(NoticeDto board) throws Exception {
         noticeMapper.NoticeInsertBoard(board);
     }
 
@@ -56,6 +50,10 @@ public class NoticeServiceImpl implements NoticeService {
         noticeMapper.NoticeDeleteBoard(boardNum);
     }
 
+    @Override
+    public int adminCheck(String userId) throws Exception {
+        return noticeMapper.adminCheck(userId);
+    }
 
 
 }

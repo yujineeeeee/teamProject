@@ -6,7 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ReservationMapper {
-   ReservationDto selectReservationList() throws Exception;
-
-   public void insertReservation(ReservationDto reservation) throws Exception;
+   void insertReservation(ReservationDto reservation) throws Exception;
 }

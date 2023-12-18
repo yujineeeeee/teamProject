@@ -22,4 +22,5 @@ public interface NoticeMapper {
     void NoticeDeleteBoard(@Param("noticeNum") int noticeNum) throws Exception;
 
 
+    int adminCheck(String userId) throws Exception;
 }

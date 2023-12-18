@@ -16,21 +16,17 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ReviewDto> selectReviewList() throws Exception {
-        return (List<ReviewDto>) reviewMapper.selectReviewList();
+        return reviewMapper.selectReviewList();
+    }
+
+    @Override
+    public void deleteReview(String reviewNum) throws Exception {
+        reviewMapper.deleteReview(reviewNum);
     }
 
     @Override
     public void insertReview(ReviewDto review) throws Exception {
         reviewMapper.insertReview(review);
-    }
-
-    @Override
-    public ReviewDto selectReviewDetail(int reviewNum) throws Exception {
-
-        //reviewNum을 기준으로 review에 저장된 DB를 다 가져옴
-        ReviewDto review = reviewMapper.selectReviewDetail(reviewNum);
-
-        return review;
     }
 
 

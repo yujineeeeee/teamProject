@@ -15,10 +15,11 @@ public interface NoticeService {
 
     public NoticeDto selectBoardDetail(int noticeNum) throws Exception;
 
-    public void NoticeInsertBoard(NoticeDto board, MultipartHttpServletRequest multipart) throws Exception;
+    public void NoticeInsertBoard(NoticeDto board) throws Exception;
 
     public void NoticeUpdateBoard(NoticeDto board) throws Exception;
+
     public void NoticeDeleteBoard(int noticeNum) throws Exception;
 
-
+    int adminCheck(String userId) throws Exception;
 }

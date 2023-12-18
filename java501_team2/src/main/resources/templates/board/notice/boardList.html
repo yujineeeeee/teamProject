@@ -141,7 +141,10 @@
         </tbody>
     </table>
     <div class="mt-6 d-flex justify-content-end">
-        <a class="btn btn-success" href="/notWrite.do"> <b> 글쓰기 </b> </a>
+<!--        <a class="btn btn-success" href="/notWrite.do"><b> 글쓰기 </b></a>-->
+        <div th:if="${session.userId} == 'admin'">
+            <a class="btn btn-success" href="/notWrite.do"><b> 글쓰기 </b></a>
+        </div>
     </div>
 </main>
 

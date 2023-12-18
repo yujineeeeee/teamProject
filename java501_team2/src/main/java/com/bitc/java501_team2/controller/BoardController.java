@@ -27,7 +27,6 @@ public class BoardController {
     private ReviewService reviewService;
 
 
-
     @RequestMapping("/")
     public String index() throws Exception {
         return "index";
@@ -49,29 +48,19 @@ public class BoardController {
 
     //    ------------------------------------------- 예약하기 ---------------------------------------------------------
 
-    //    예약 페이지
-    @RequestMapping(value = "/reservation.do", method = RequestMethod.GET)
-    public String reservation() throws Exception {
+    @GetMapping("/reservation.do")
+    public String reservation() throws Exception{
         return "board/reservation";
     }
 
-    @RequestMapping(value = "/reservation.do", method = RequestMethod.POST)
-    public ModelAndView reservationProcess() throws Exception {
-        ModelAndView mv = new ModelAndView("board/reservation");
-
-        ReservationDto board = reservationService.selectReservationList();
-        mv.addObject("board", board);
-
-        return mv;
-    }
-
-    @RequestMapping("/board/insertReservation.do")
-    public String insertReservation(ReservationDto reservation) throws Exception {
+    @PostMapping("/insertReservation.do")
+    public String insertReservation(ReservationDto reservation) throws Exception{
         reservationService.insertReservation(reservation);
 
-//        지정한 주소로 리다이렉트
         return "redirect:/reservation.do";
     }
+
+
 
 //    ------------------------------------------- 공지사항 ---------------------------------------------------------
 
@@ -92,11 +81,21 @@ public class BoardController {
         return "board/notice/boardWrite";
     }
 
-    //     공지사항 글쓰기
-    @RequestMapping("/notInsertBoard.do")
-    public String insertBoard(NoticeDto board, MultipartHttpServletRequest multipart) throws Exception {
+//    공지사항 글쓰기 전 관리자인지 확인
+    @ResponseBody
+    @GetMapping("/adminCheck.do")
+    public Object adminCheck(@RequestParam("userId") String userId) throws Exception{
 
-        noticeService.NoticeInsertBoard(board, multipart);
+        int result = noticeService.adminCheck(userId);
+
+        return null;
+    }
+
+    //     공지사항 글쓰기
+    @PostMapping("/notInsertBoard.do")
+    public String insertBoard(NoticeDto board) throws Exception {
+
+        noticeService.NoticeInsertBoard(board);
 //        지정한 주소로 리다이렉트
         return "redirect:/not.do";
     }
@@ -132,41 +131,31 @@ public class BoardController {
     }
 
     //    ------------------------------------------- 리뷰 ---------------------------------------------------------
-    @RequestMapping(value = "/reviewList.do", method = RequestMethod.GET)
-    public ModelAndView selectReviewList() throws Exception {
 
-        ModelAndView mv = new ModelAndView("board/reviewList");
+    //    리뷰 목록
+    @GetMapping("/reviewList.do")
+    public ModelAndView review() throws Exception {
+        ModelAndView mv = new ModelAndView("/board/reviewList");
 
-        List<ReviewDto> reviewList = (List<ReviewDto>) reviewService.selectReviewList();
+        List<ReviewDto> reviewList = reviewService.selectReviewList();
         mv.addObject("reviewList", reviewList);
 
         return mv;
     }
 
-    @RequestMapping(value = "/reviewList.do", method = RequestMethod.POST)
-    public String ReviewProcess(ReviewDto review) throws Exception {
-        reviewService.insertReview(review);
-
-        return "redirect:/main.do";
+    //    리뷰 삭제
+    @ResponseBody
+    @PostMapping("/reviewDelete.do")
+    public void deleteReview(@RequestParam("reviewNum") String reviewNum) throws Exception {
+        reviewService.deleteReview(reviewNum);
     }
 
-    @RequestMapping("/board/insertReview.do")
+    // 리뷰 등록
+    @PostMapping("/insertReview.do")
     public String insertReview(ReviewDto review) throws Exception {
         reviewService.insertReview(review);
 
         return "redirect:/reviewList.do";
-    }
-
-
-//    ----------------------테스트
-    @GetMapping("/popupTest")
-    public String popupTest() throws  Exception{
-        return "popup/popupTest";
-    }
-
-    @GetMapping("/popup")
-    public String popup() throws  Exception{
-        return "popup/popup";
     }
 
 

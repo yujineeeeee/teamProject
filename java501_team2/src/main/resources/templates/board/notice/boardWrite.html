@@ -39,6 +39,14 @@
 
 
     <link rel="stylesheet" type="text/css" href="/css/notice.css"/>
+
+    <script>
+        $(document).ready(function () {
+            $("#btn-list").on("click", function () {
+                location.href = "/not.do";
+            });
+        });
+    </script>
 </head>
 
 <body id="community" class="tables">
@@ -59,19 +67,17 @@
 
 
 <main class="container">
-
     <section>
         <div class="row">
             <div class="col-sm-4 mx-auto" style="margin-top: 250px">
-                <!--                파일 정보와 form 정보를 동시에 전달하기 위해서 enctype을 변경-->
-                <form action="noticeInsertBoard.do" method="post" enctype="multipart/form-data">
+                <form action="/notInsertBoard.do" method="post">
                     <div class="Insert">
                         <div class="mt-3">
                             <label for="user_id" class="form-label" style="font-weight: bold"> 아이디 </label>
                             <!--                        input 태그의 name 속성명을 Dto 클래스의 필드명과 동일하게 사용-->
                             <input type="text" class="form-control vvv" id="user_id" name="noticeId"
                                    style="text-align: center"
-                                   placeholder="아이디를 입력해주세요">
+                                   placeholder="아이디를 입력해주세요" th:value="${session.userId}" readonly>
                         </div>
                         <div class="mt-3">
                             <label for="title" class="form-label" style="font-weight: bold">제목 </label>
@@ -89,14 +95,13 @@
                     </div>
 
 
-                    <button type="submit" style="text-align: end; margin-left: 330px; " class="btn" id="check">
+                    <button type="submit" style="text-align: end; margin-left: 330px; " class="btn-insert" id="check">
                         <img src="/images/check.jpg" alt="등록"></button>
 
-                    <button type="button" style="text-align:start; margin-top: -100px;" class="btn" id="btn-list">
+                    <button type="button" style="text-align:start; margin-top: -100px;" class="btn-back" id="btn-list">
                         <img src="/images/back.jpg" alt="목록"></button>
 
-                    <button type="reset" style="position: relative; bottom: 50px; left: 60px;; " class=" btn btn-secondary"
-                            id="btn-cancel">
+                    <button type="reset" style="position: relative; bottom: 50px; left: 60px;; " class="btn btn-secondary" id="btn-cancel">
                         내용 취소하기
                     </button>
 
@@ -107,19 +112,5 @@
     </section>
 </main>
 <div th:replace="~{layout/footer :: footer}"></div>
-
-<script>
-    $(document).ready(function () {
-        // 뒤로가기 버튼
-        $("#btn-list").on("click", function () {
-            location.href = "/not.do";
-        });
-        // //  취소하기
-        // $("#btn-cancel").on("click", function () {
-        //     $("#title, #user_id, #contents").val('');
-        // });
-
-    });
-</script>
 </body>
 </html>

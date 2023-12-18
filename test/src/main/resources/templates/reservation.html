@@ -1,0 +1,457 @@
+<html lang="ko"
+      data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+      class="" data-platform="Win32">
+<head>
+    <meta charset="UTF-8">
+    <title>츠키노야(月の や)료칸&amp;풀빌라</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;display=swap&amp;subset=korean"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+
+    <link rel="stylesheet"
+          href="/resources/bundles/commons~web.BookingAlertEntry~web.BookingCalendarEntry~web.BookingCalendarStatusEntry~web.BookingCon~bec4afad.bundle.css"
+          type="text/css">
+    <link rel="stylesheet" href="/resources/bundles/web.BookingCalendarEntry.bundle.css" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/reservation.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <script async="" src="//fs.bizspring.net/fs4/logger.v4.1.js"></script>
+    <script type="text/javascript" defer="" src="//log1.toup.net/mirae_response_load.php?k=rkzbn"></script>
+    <script async="" src="//fs.bizspring.net/fs4/bstrk.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/modify.js" defer=""></script>
+    <script type="text/javascript" src="js/reserve.js" defer=""></script>
+    <script type="text/javascript" src="js/common.js" defer=""></script>
+
+</head>
+
+<body id="reserve" class="tables">
+<section>
+    <div class="section banner" id="Banner">
+        <div class="InBox">
+            <h2 class="ttls">
+                <div></div>
+                <span> CHECK THE&nbsp;<b>RESERVATION</b></span>
+                <strong>RESERVATION</strong>
+            </h2>
+        </div>
+    </div>
+
+    <div id="container">
+        <div class="container-inner">
+            <div class="jss1">
+                <div class="MuiGrid-root jss3 MuiGrid-container MuiGrid-align-items-xs-flex-start">
+                </div>
+                <div class="jss10">
+                    <div class="jss20 bookingSection jss14">
+                        <div class="MuiGrid-root jss22 sectionContainer MuiGrid-container">
+                            <div class="MuiGrid-root jss11 sectionHeader MuiGrid-container"><span>츠키노야 료칸&amp;풀빌라</span>
+                            </div>
+                            <div class="jss23">
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>부산광역시 부산진구 중앙대로 708-501호</dd>
+                                </dl>
+                                <dl>
+                                    <dt>연락처</dt>
+                                    <dd>010-7642-9861</dd>
+                                </dl>
+                                <dl>
+                                    <dt>계좌이체</dt>
+                                    <dd>국민은행 939302-00-210187 이기호</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <script>
+                        function validateForm() {
+                            var checkInDate = $("#checkInDate").val();
+                            var checkOutDate = $("#checkOutDate").val();
+                            var checkBox1 = $('input[name="reservationRoomType1"]');
+                            var checkBox2 = $('input[name="reservationRoomType2"]');
+                            var checkBox3 = $('input[name="reservationRoomType3"]');
+
+
+                            // if (!checkInDate || !checkOutDate) {
+                            //     alert('날짜를 지정해 주세요');
+                            //     return false; // 폼이 전송되지 않도록 false를 반환합니다.
+                            // }
+                            //
+                            // if (!checkBox1.checked && !checkBox2.checked && !checkBox3.checked) {
+                            //     alert("객실을 선택해 주세요");
+                            //     return false; // 폼이 전송되지 않도록 false를 반환합니다.
+                            // }
+
+                            alert("예약되었습니다. 마이페이지에서 예약 내역을 확인해주세요");
+                            return true;
+                        }
+                    </script>
+
+
+                    <form id="reservationForm" action="/insertReservation.do" method="post" onsubmit="return validateForm()">
+<!--                        숙박일 선택-->
+                        <div class="jss20 jss15">
+                            <div class="MuiGrid-root jss21 sectionHeader MuiGrid-container">숙박기간</div>
+
+                            <div class="date-picker">
+                                <label for="checkInDate">입실일:</label>
+                                <input type="text" id="checkInDate" name="checkInDate">
+
+                                <label for="checkOutDate">퇴실일:</label>
+                                <input type="text" id="checkOutDate" name="checkOutDate">
+                            </div>
+
+                            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                            <script>
+                                const startDate = flatpickr("#checkInDate", {
+                                    dateFormat: "Y-m-d",
+                                    minDate: "today",
+                                    onClose: function (selectedDates, dateStr, instance) {
+                                        endDate.set("minDate", dateStr);
+                                    }
+                                });
+
+                                const endDate = flatpickr("#checkOutDate", {
+                                    dateFormat: "Y-m-d",
+                                    minDate: "today",
+                                    disable: [
+                                        function (date) {
+                                            return (date <= startDate.selectedDates[0] || date <= new Date());
+                                        }
+                                    ]
+                                });
+                            </script>
+                        </div>
+
+
+<!--                       객실 선택 -->
+                        <div class="jss20 bookingSection jss17">
+                            <div class="MuiGrid-root jss22 sectionContainer MuiGrid-container">
+                                <div class="MuiGrid-root jss11 sectionHeader MuiGrid-container MuiGrid-align-items-xs-flex-end">객실선택
+                                    <div class="jss9"></div>
+                                </div>
+
+                                <div class="jss25">
+                                    <ul class="jss26 itemList">
+<!--                                        201호 객실-->
+                                        <li>
+                                            <a class="jss28">
+                                                <div>
+                                                    <img src="https://img.ddnayo.com/DataImageThumbnail/0041/1685943862475AWVR22T9n1o1CMIkenm.jpg">
+                                                </div>
+                                                <div class="jss29">
+                                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                                         aria-hidden="true" role="presentation">
+                                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+<!--                                            201호 설명-->
+                                            <div class="jss30 itemInfo">
+                                                <span class="jss137 jss135 jss134 jss147">
+                                                    <i class="jss136">예약가능</i>
+                                                </span>
+                                                <div class="jss31 itemTitle">
+                                                    201 츠키 (POOL, 히노끼)
+                                                </div>
+                                                <div class="itemDetail">
+                                                    <div>기준 2명</div>
+                                                    <div>원룸형 / 19평</div>
+                                                </div>
+                                            </div>
+
+<!--                                            201호 인원수 설정-->
+                                            <div class="jss32">
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center align-middle">
+                                                    <span>인원</span>
+                                                    <div class="text-center">
+                                                        <div class="row">
+                                                            <div class="col-sm input-group mb-3">
+                                                                <button type="button" class="input-group-text" id="btn-minus-201" >-</button>
+                                                                <input type="text" class="form-control text-center" id="person-cnt-201" name="roomType1PersonCnt" value="0">
+                                                                <button type="button" class="input-group-text" id="btn-plus-201" >+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="jss34">
+                                                <div class="jss35">
+                                                    <input type="checkbox" id="room201"
+                                                           name="reservationRoomType1"
+                                                           class="jss36" value="201 츠키 (POOL, 히노끼)">
+                                                    <label for="room201" class="jss37 selectItemLabel">
+                                                        <svg class="MuiSvgIcon-root" focusable="false"
+                                                             viewBox="0 0 24 24"
+                                                             aria-hidden="true" role="presentation">
+                                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                                                        </svg>
+                                                        <span>선택</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                $("#btn-plus-201").on("click", function(){
+                                                    let currentValue = parseInt($("#person-cnt-201").val());
+
+                                                    if(!isNaN(currentValue)){
+                                                        currentValue++;
+                                                        $("#person-cnt-201").val(currentValue);
+                                                    }
+                                                })
+
+                                                $("#btn-minus-201").on("click", function(){
+                                                    let currentValue = parseInt($("#person-cnt-201").val());
+
+                                                    if(!isNaN(currentValue) && currentValue > 0){
+                                                        currentValue--;
+                                                        $("#person-cnt-201").val(currentValue);
+                                                    }
+                                                })
+                                            </script>
+                                        </li>
+
+<!--                                        202호-->
+                                        <li>
+                                            <a class="jss28">
+                                                <div>
+                                                    <img src="https://img.ddnayo.com/DataImageThumbnail/0041/1685944821502h41xsKYR2blMObAPkAx.jpg">
+                                                </div>
+                                                <div class="jss29">
+                                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                                         aria-hidden="true" role="presentation">
+                                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                            <!--                                            202호 설명-->
+                                            <div class="jss30 itemInfo">
+                                                <span class="jss137 jss135 jss134 jss147">
+                                                    <i class="jss136">예약가능</i>
+                                                </span>
+                                                <div class="jss31 itemTitle">
+                                                    202 히카리 (자쿠지)
+                                                </div>
+                                                <div class="itemDetail">
+                                                    <div>기준 2명</div>
+                                                    <div>원룸형 / 17평</div>
+                                                </div>
+                                            </div>
+
+                                            <!--                                            202호 인원수 설정-->
+                                            <div class="jss32">
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center align-middle">
+                                                    <span>인원</span>
+                                                    <div class="text-center">
+                                                        <div class="row">
+                                                            <div class="col-sm input-group mb-3">
+                                                                <button type="button" class="input-group-text" id="btn-minus-202">-</button>
+                                                                <input type="text" class="form-control text-center" id="person-cnt-202" name="roomType2PersonCnt" value="0">
+                                                                <button type="button" class="input-group-text" id="btn-plus-202">+</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <script>
+                                                            $("#btn-plus-202").on("click", function(){
+                                                                let currentValue = parseInt($("#person-cnt-202").val());
+
+                                                                if(!isNaN(currentValue)){
+                                                                    currentValue++;
+                                                                    $("#person-cnt-202").val(currentValue);
+                                                                }
+                                                            })
+
+                                                            $("#btn-minus-202").on("click", function(){
+                                                                let currentValue = parseInt($("#person-cnt-202").val());
+
+                                                                if(!isNaN(currentValue) && currentValue > 0){
+                                                                    currentValue--;
+                                                                    $("#person-cnt-202").val(currentValue);
+                                                                }
+                                                            })
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="jss34">
+                                                <div class="jss35">
+                                                    <input type="checkbox" id="room202" name="reservationRoomType2" class="jss36" value="201호 츠키(POOL, 히노끼)">
+                                                    <label for="room202" class="jss37 selectItemLabel">
+                                                        <svg class="MuiSvgIcon-root" focusable="false"
+                                                             viewBox="0 0 24 24"
+                                                             aria-hidden="true" role="presentation">
+                                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                                                        </svg>
+                                                        <span>선택</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+                                        <!--                                        401호-->
+                                        <li>
+                                            <a class="jss28">
+                                                <div>
+                                                    <img src="https://img.ddnayo.com/DataImageThumbnail/0041/c024b45d3f994b1795cf3baef5d17c65.jpg">
+                                                </div>
+                                                <div class="jss29">
+                                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                                         aria-hidden="true" role="presentation">
+                                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                                        <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                            <!--                                            401호 설명-->
+                                            <div class="jss30 itemInfo">
+                                                <span class="jss137 jss135 jss134 jss147">
+                                                    <i class="jss136">예약가능</i>
+                                                </span>
+                                                <div class="jss31 itemTitle">
+                                                    401 (스파, 복층)
+                                                </div>
+                                                <div class="itemDetail">
+                                                    <div>기준 2명</div>
+                                                    <div>원룸형 / 19평</div>
+                                                </div>
+                                            </div>
+
+                                            <!--                                            401호 인원수 설정-->
+                                            <div class="jss32">
+                                                <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center align-middle">
+                                                    <span>인원</span>
+                                                    <div class="text-center">
+                                                        <div class="row">
+                                                            <div class="col-sm input-group mb-3">
+                                                                <button type="button" class=" input-group-text" id="btn-minus-401">-</button>
+                                                                <input type="text" class="form-control text-center" id="person-cnt-401" name="roomType3PersonCnt" value="0">
+                                                                <button type="button" class=" input-group-text" id="btn-plus-401">+</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <script>
+                                                            $("#btn-plus-401").on("click", function(){
+                                                                let currentValue = parseInt($("#person-cnt-401").val());
+
+                                                                if(!isNaN(currentValue)){
+                                                                    currentValue++;
+                                                                    $("#person-cnt-401").val(currentValue);
+                                                                }
+                                                            })
+
+                                                            $("#btn-minus-401").on("click", function(){
+                                                                let currentValue = parseInt($("#person-cnt-401").val());
+
+                                                                if(!isNaN(currentValue) && currentValue > 0){
+                                                                    currentValue--;
+                                                                    $("#person-cnt-401").val(currentValue);
+                                                                }
+                                                            })
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="jss34">
+                                                <div class="jss35">
+                                                    <input type="checkbox" id="room401" name="reservationRoomType3" class="jss36" value="401호 (스파, 복층)">
+                                                    <label for="room401" class="jss37 selectItemLabel">
+                                                        <svg class="MuiSvgIcon-root" focusable="false"
+                                                             viewBox="0 0 24 24"
+                                                             aria-hidden="true" role="presentation">
+                                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                                                        </svg>
+                                                        <span>선택</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height: 20px"></div>
+
+<!--                        <div style="display: flex; justify-content: flex-end;">-->
+<!--                            <div class="jss3333">-->
+<!--                                <input type="submit" id="room-164645" name="room-164645" class="jss36">-->
+<!--                                <label for="room-164645" class="jss37 selectItemLabel">-->
+<!--                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"-->
+<!--                                         aria-hidden="true" role="presentation">-->
+<!--                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>-->
+<!--                                    </svg>-->
+<!--                                    <span>예약하기</span>-->
+<!--                                </label>-->
+<!--&lt;!&ndash;                                <input type="hidden" id="reservationPersonCnt" value="">&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+                        <div class="d-flex justify-content-end">
+                            <div class="jss3333">
+                                <button type="submit" id="btn-reservation" class="btn btn-danger">예약하기</button>
+                            </div>
+                        </div>
+
+<!--                        <script>-->
+<!--                            $("#btn-reservation").on("click", function(){-->
+<!--                                const checkInDate = $("#checkInDate").val();-->
+<!--                                const checkOutDate = $("#checkOutDate").val();-->
+<!--                                const reservationPersonCnt = parseInt( $("#person-cnt-201").val()) + parseInt( $("#person-cnt-202").val()) + parseInt( $("#person-cnt-401").val());-->
+<!--                                const-->
+
+
+<!--                                $.ajax({-->
+<!--                                    url:"/insertReservation.do",-->
+<!--                                    type:"POST",-->
+<!--                                    // data:"",-->
+<!--                                    success:function (data){-->
+<!--                                        alert(checkInDate + " , " + checkOutDate + " , " + reservationPersonCnt);-->
+<!--                                    },-->
+<!--                                    error:function (){-->
+
+<!--                                    }-->
+<!--                                })-->
+<!--                            });-->
+<!--                        </script>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</section>
+
+
+</body></html>

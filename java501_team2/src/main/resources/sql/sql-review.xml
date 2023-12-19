@@ -20,6 +20,17 @@
         review_num DESC
     </select>
 
+    <select id="selectBoardPageList" resultType="com.bitc.java501_team2.dto.ReviewDto">
+        SELECT
+        review_num, review_content, review_id, review_star, review_postdate, review_deleted_yn
+        FROM
+        review
+        WHERE
+        review_deleted_yn = 'N'
+        ORDER BY
+        review_num DESC
+    </select>
+
 <!--    정보 삭제하기 -->
     <update id="deleteReview" parameterType="String">
         UPDATE review

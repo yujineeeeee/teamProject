@@ -36,9 +36,9 @@
     </update>
 
     <update id="NoticeUpdateBoard" parameterType="com.bitc.java501_team2.dto.NoticeDto">
-    UPDATE notice SET notice_title=#{noticeTitle}, notice_content=#{noticeContent},
-    notice_update_date=NOW()
-    WHERE notice_num = #{noticeNum}
+        UPDATE notice SET notice_title=#{noticeTitle}, notice_content=#{noticeContent},
+        notice_update_date=NOW()
+        WHERE notice_num = #{noticeNum}
     </update>
 
 </mapper>

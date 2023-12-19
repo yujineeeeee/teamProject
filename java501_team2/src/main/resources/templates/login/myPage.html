@@ -45,15 +45,17 @@
     </script>
 
 </head>
-<body>
-<div th:replace="~{/layout/header :: headerNavbar}"></div>
+<body id="special" class="detail special">
+<div th:replace="~{layout/header :: headerNavbar}"></div>
 
 <section>
-    <div class="section banner" id="Banner">
+    <div class="section" id="visual" style="background-image: url(http://gonylab7.speedgabia.com/solspa/special/1/1.jpg);">
         <div class="InBox">
             <h2 class="ttls">
                 <div></div>
-                <span> CONFIRM YOUR&nbsp;<b>INFORMATION & RESERVATION</b></span>
+                <span>
+                    CHECK MY INFO & RESERVATION
+                </span>
                 <strong>MY PAGE</strong>
             </h2>
         </div>
@@ -90,51 +92,58 @@
         <h3 class="mt-5">MY RESERVATION</h3>
         <div class="card mt-3 p-3">
             <div class="card-body">
-
                 <div th:if="${#lists.size(reservationList)} > 0" th:each="item : ${reservationList}">
-                    <div class="border">
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="com-sm-3 col-form-label">예약자</label>
-                                <div class="col-sm">
-                                    <input type="text" readonly class="form-control-plaintext" th:value="${item.reservationName}">
-                                </div>
+                    <div class="border-bottom border-top mb-2">
+                        <div class="ms-1 mb-3 row">
+                            <label for="reservationDate" class="col-sm-2 col-form-label">예약날짜</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="reservationDate"
+                                       th:value="${item.reservationDate}">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm">
-<!--                                <label class="com-sm-3 col-form-label">예약한 날짜</label>-->
-                                <div class="col-sm">
-                                    <input type="text" readonly class="form-control-plaintext" th:value="${item.reservationDate}">
-                                </div>
+
+                        <div class="ms-1 mb-3 row">
+                            <label for="reservationDate" class="col-sm-2 col-form-label">방정보</label>
+                            <div class="col-sm" th:if="${item.reservationRoomType1} == null">
+                            </div>
+                            <div class="col-sm" th:unless="${item.reservationRoomType1} == null">
+                                <input type="text" readonly class="form-control-plaintext"
+                                       th:value="|${item.reservationRoomType1}, ${item.roomType1PersonCnt}명|">
+                            </div>
+                            <div class="col-sm" th:if="${item.reservationRoomType2} == null">
+                            </div>
+                            <div class="col-sm" th:unless="${item.reservationRoomType2} == null">
+                                <input type="text" readonly class="form-control-plaintext"
+                                       th:value="|${item.reservationRoomType2}, ${item.roomType2PersonCnt}명|">
+                            </div>
+                            <div class="col-sm" th:if="${item.reservationRoomType3} == null">
+                            </div>
+                            <div class="col-sm" th:unless="${item.reservationRoomType3} == null">
+                                <input type="text" readonly class="form-control-plaintext"
+                                       th:value="|${item.reservationRoomType3}, ${item.roomType3PersonCnt}명|">
                             </div>
                         </div>
-<!--                        <div class="row" th:if="${item.reservationRoomType1} == null"></div>-->
-<!--                        <div class="row" th:unless="${item.reservationRoomType1} == null">-->
-<!--                            <div class="col-sm">-->
-<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType1}, ${item.roomType1PersonCnt}| 명">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="row" th:if="${item.reservationRoomType2} == null"></div>-->
-<!--                        <div class="row" th:unless="${item.reservationRoomType2} == null">-->
-<!--                            <div class="col-sm">-->
-<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType2}, ${item.roomType2PersonCnt}| 명">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="row" th:if="${item.reservationRoomType3} == null"></div>-->
-<!--                        <div class="row" th:unless="${item.reservationRoomType3} == null">-->
-<!--                            <div class="col-sm">-->
-<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType3}, ${item.roomType3PersonCnt}| 명">-->
-<!--                            </div>-->
-<!--                        </div>-->
+
+                        <div class="ms-1 mb-3 row">
+                            <label for="checkInDate" class="col-sm-2 col-form-label">체크인</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="checkInDate"
+                                       th:value="${item.checkInDate}">
+                            </div>
+                        </div>
+
+                        <div class="ms-1 mb-3 row">
+                            <label for="checkOutDate" class="col-sm-2 col-form-label">체크아웃</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="checkOutDate"
+                                       th:value="${item.checkOutDate}">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div th:unless="${#lists.size(reservationList)} > 0">
                     <span>조회 결과 없음</span>
-
                 </div>
-
-
             </div>
         </div>
 

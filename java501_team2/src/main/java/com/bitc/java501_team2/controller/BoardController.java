@@ -41,6 +41,7 @@ public class BoardController {
     }
 
 
+
     //    오시는 길
     @GetMapping("/location.do")
     public String location2() throws Exception {
@@ -65,16 +66,6 @@ public class BoardController {
 //    ------------------------------------------- 공지사항 ---------------------------------------------------------
 
     //    공지사항
-//    @RequestMapping(value = "/not.do", method = RequestMethod.GET)
-//    public ModelAndView boardList() throws Exception {
-//        ModelAndView mv = new ModelAndView("board/notice/boardList");
-//
-//        List<NoticeDto> boardList = noticeService.selectBoardList();
-//        mv.addObject("boardList", boardList);
-//
-//        return mv;
-//    }
-
     @RequestMapping(value = "/not.do", method = RequestMethod.GET)
     public ModelAndView boardList(@RequestParam(value = "page", required = false, defaultValue = "1") int page,@RequestParam(required = false, defaultValue = "", value = "keyword")String keyword) throws Exception {
         ModelAndView mv = new ModelAndView("board/notice/boardList");
@@ -93,16 +84,7 @@ public class BoardController {
     public String boardWrite() throws Exception {
         return "board/notice/boardWrite";
     }
-//
-////    공지사항 글쓰기 전 관리자인지 확인
-//    @ResponseBody
-//    @GetMapping("/adminCheck.do")
-//    public Object adminCheck(@RequestParam("userId") String userId) throws Exception{
-//
-//        int result = noticeService.adminCheck(userId);
-//
-//        return null;
-//    }
+
 
     //     공지사항 글쓰기
     @PostMapping("/notInsertBoard.do")
@@ -146,11 +128,11 @@ public class BoardController {
 
     //    리뷰 목록
     @GetMapping("/reviewList.do")
-    public ModelAndView review() throws Exception {
-        ModelAndView mv = new ModelAndView("/board/reviewList");
+    public ModelAndView selectBoardPagingList(@RequestParam(required = false, defaultValue = "1", value = "pageNum") int pageNum) throws Exception {
+        ModelAndView mv = new ModelAndView("board/reviewList");
 
-        List<ReviewDto> reviewList = reviewService.selectReviewList();
-        mv.addObject("reviewList", reviewList);
+        PageInfo<ReviewDto> boardPageList = new PageInfo<>(reviewService.selectBoardPageList(pageNum), 5);
+        mv.addObject("boardPageList", boardPageList);
 
         return mv;
     }

@@ -32,7 +32,7 @@
         insert into
         review (review_star, review_content, review_id, review_postdate)
         values
-        (#{reviewStar}, #{reviewContent}, 'test2', now());
+        (#{reviewStar}, #{reviewContent}, #{reviewId}, now());
     </insert>
 </mapper>
 

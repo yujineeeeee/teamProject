@@ -4,9 +4,27 @@
     width: 100%; /* 테이블의 가로 너비를 100%로 설정 */
     /*height: 1px;*/
     margin-bottom: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width : 2px;
+}
+
+.custom-bg {
+    background-color:#3e7a9f;
+    color: whitesmoke;
+}
+.custom-bg:hover {
+    background-color: #3e7a9f; /* 마우스를 갖다 놓았을 때의 배경색을 지정하세요 */
+    color: whitesmoke; /* 마우스를 갖다 놓았을 때의 글자색을 지정하세요 */
+}
+.custom-bg b {
+    background-color: #3e7a9f;
+    color: whitesmoke; /* 텍스트에 대한 원하는 글자색을 지정하세요 */
+}
+.custom-bg:active  {
+    background-color: #3e7a9f; /* 버튼을 눌렀을 때의 배경색을 지정하세요 */
+    color: whitesmoke; /* 버튼을 눌렀을 때의 글자색을 지정하세요 */
+}
+.custom-bg:focus  {
+    background-color: #3e7a9f; /* 버튼을 눌렀을 때의 배경색을 지정하세요 */
+    color:#3e7a9f; /* 버튼을 눌렀을 때의 글자색을 지정하세요 */
 }
 
 .frm {

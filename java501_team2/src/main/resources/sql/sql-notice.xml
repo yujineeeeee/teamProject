@@ -11,6 +11,14 @@
         ORDER BY notice_num DESC
     </select>
 
+    <select id="selectBoardListKeyword" resultType="com.bitc.java501_team2.dto.NoticeDto" parameterType="String">
+        SELECT notice_num, notice_title,notice_id,notice_postdate, notice_visitcount,notice_update_date
+        FROM notice
+        WHERE notice_deleted_yn='N'
+        AND notice_title like CONCAT('%',#{keyword},'%')
+        ORDER BY notice_num DESC
+    </select>
+
     <select id="selectBoardDetail" parameterType="int" resultType="com.bitc.java501_team2.dto.NoticeDto">
         select notice_num,notice_title,notice_content,notice_id,notice_postdate,notice_update_date,notice_visitcount
         from notice
@@ -33,7 +41,4 @@
     WHERE notice_num = #{noticeNum}
     </update>
 
-    <select id="adminCheck" resultType="int" parameterType="String">
-
-    </select>
 </mapper>

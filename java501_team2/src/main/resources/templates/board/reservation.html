@@ -45,6 +45,13 @@
     <script type="text/javascript" src="js/modify.js" defer=""></script>
     <script type="text/javascript" src="js/reserve.js" defer=""></script>
     <script type="text/javascript" src="js/common.js" defer=""></script>
+
+    <script>
+        $(document).ready(function(){
+
+
+        });
+    </script>
 </head>
 
 <body id="reserve" class="tables">
@@ -115,6 +122,10 @@
 
 
                     <form id="reservationForm" action="/insertReservation.do" method="post" onsubmit="return validateForm()">
+
+                        <input type="hidden" name="reservationId" th:value="${session.userId}">
+                        <input type="hidden" name="reservationName" th:value="${session.userName}">
+
                         <!--                        숙박일 선택-->
                         <div class="jss20 jss15">
                             <div class="MuiGrid-root jss21 sectionHeader MuiGrid-container">숙박기간</div>

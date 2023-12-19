@@ -6,6 +6,7 @@ import com.bitc.java501_team2.dto.ReviewDto;
 import com.bitc.java501_team2.service.NoticeService;
 import com.bitc.java501_team2.service.ReservationService;
 import com.bitc.java501_team2.service.ReviewService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -61,42 +62,53 @@ public class BoardController {
     }
 
 
-
 //    ------------------------------------------- 공지사항 ---------------------------------------------------------
 
     //    공지사항
+//    @RequestMapping(value = "/not.do", method = RequestMethod.GET)
+//    public ModelAndView boardList() throws Exception {
+//        ModelAndView mv = new ModelAndView("board/notice/boardList");
+//
+//        List<NoticeDto> boardList = noticeService.selectBoardList();
+//        mv.addObject("boardList", boardList);
+//
+//        return mv;
+//    }
+
     @RequestMapping(value = "/not.do", method = RequestMethod.GET)
-    public ModelAndView boardList() throws Exception {
+    public ModelAndView boardList(@RequestParam(value = "page", required = false, defaultValue = "1") int page,@RequestParam(required = false, defaultValue = "", value = "keyword")String keyword) throws Exception {
         ModelAndView mv = new ModelAndView("board/notice/boardList");
 
-        List<NoticeDto> boardList = noticeService.selectBoardList();
+
+        PageInfo<NoticeDto> boardList = new PageInfo<>(noticeService.selectBoardList(page, keyword),5);
         mv.addObject("boardList", boardList);
+        mv.addObject("keyword", keyword);
 
         return mv;
     }
+
 
     //   공지사항 글쓰기 뷰 페이지
     @RequestMapping("/notWrite.do")
     public String boardWrite() throws Exception {
         return "board/notice/boardWrite";
     }
-
-//    공지사항 글쓰기 전 관리자인지 확인
-    @ResponseBody
-    @GetMapping("/adminCheck.do")
-    public Object adminCheck(@RequestParam("userId") String userId) throws Exception{
-
-        int result = noticeService.adminCheck(userId);
-
-        return null;
-    }
+//
+////    공지사항 글쓰기 전 관리자인지 확인
+//    @ResponseBody
+//    @GetMapping("/adminCheck.do")
+//    public Object adminCheck(@RequestParam("userId") String userId) throws Exception{
+//
+//        int result = noticeService.adminCheck(userId);
+//
+//        return null;
+//    }
 
     //     공지사항 글쓰기
     @PostMapping("/notInsertBoard.do")
     public String insertBoard(NoticeDto board) throws Exception {
 
         noticeService.NoticeInsertBoard(board);
-//        지정한 주소로 리다이렉트
         return "redirect:/not.do";
     }
 
@@ -143,6 +155,11 @@ public class BoardController {
         return mv;
     }
 
+    @GetMapping("/reviewWrite.do")
+    public String reviewWrite() throws Exception{
+        return "board/reviewWrite";
+    }
+
     //    리뷰 삭제
     @ResponseBody
     @PostMapping("/reviewDelete.do")
@@ -157,6 +174,4 @@ public class BoardController {
 
         return "redirect:/reviewList.do";
     }
-
-
 }

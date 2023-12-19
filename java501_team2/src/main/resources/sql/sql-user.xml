@@ -29,6 +29,17 @@
             user_deleted_yn = 'N'
     </select>
 
+<!--    예약 정보 가져오기-->
+    <select id="getReservationInfo" parameterType="String" resultType="com.bitc.java501_team2.dto.ReservationDto">
+        SELECT
+            reservation_num, reservation_id, reservation_name, reservation_date, reservation_room_type1, room_type1_person_cnt,
+            reservation_room_type2, room_type2_person_cnt, reservation_room_type3, room_type3_person_cnt, check_in_date, check_out_date
+        FROM
+            reservation
+        WHERE
+            reservation_id = #{userId}
+    </select>
+
 
 
 </mapper>

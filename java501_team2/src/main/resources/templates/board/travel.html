@@ -12,6 +12,34 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&amp;display=swap&amp;subset=korean"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--    <link rel="stylesheet" href="/css/base.css">-->
+    <link rel="icon" href="/images/favicon.ico">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+    <script async="" src="//fs.bizspring.net/fs4/logger.v4.1.js"></script>
+    <script type="text/javascript" defer="" src="//log1.toup.net/mirae_response_load.php?k=rkzbn"></script>
+    <script async="" src="//fs.bizspring.net/fs4/bstrk.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/modify.js" defer=""></script>
+    <!--    <script type="text/javascript" src="/js/reserve.js" defer=""></script>-->
+    <script type="text/javascript" src="/js/common.js" defer=""></script>
+
     <script>
         $(document).ready(function () {
             $("#btn-busan-search").on("click", function () {
@@ -21,7 +49,7 @@
 
                 const pageNum = $("#pageNum").val();
                 const pageResult = $("#pageResult").val();
-                const datas = {pageNum : pageNum, pageResult : pageResult}
+                const datas = {pageNum: pageNum, pageResult: pageResult}
 
                 $.ajax({
                     url: "/travelSearch.do",
@@ -36,8 +64,8 @@
 
                         let tag = "";
 
-                        if(data.length > 0){
-                            for(let i=0; i<data.length; i++){
+                        if (data.length > 0) {
+                            for (let i = 0; i < data.length; i++) {
                                 tag += "<tr>";
                                 tag += "<td>" + data[i]['main_TITLE'] + "</td>";
                                 // tag += "<td>" + data[i]['main_IMG_NORMAL'] + "</td>";
@@ -63,72 +91,79 @@
     </script>
 
 </head>
-<body>
+<body id="community" class="tables">
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-center">
-        <div class="row g-2">
-            <div class="col-sm">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">페이지번호</span>
-                    <input type="text" class="form-control" id="pageNum" placeholder="숫자 입력">
-                    <span class="input-group-text">한 페이지 결과 수</span>
-                    <input type="text" class="form-control" id="pageResult" placeholder="숫자 입력">
+<div th:replace="~{layout/header :: headerNavbar}"></div>
+
+<section>
+    <div style="height: 200px"></div>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+            <div class="row g-2">
+                <div class="col-sm">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">페이지번호</span>
+                        <input type="text" class="form-control" id="pageNum" placeholder="숫자 입력">
+                        <span class="input-group-text">한 페이지 결과 수</span>
+                        <input type="text" class="form-control" id="pageResult" placeholder="숫자 입력">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" id="btn-busan-search">검색</button>
+                    <button class="btn btn-primary d-none" type="button" id="btn-loading" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Loading...</span>
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-primary" id="btn-busan-search">검색</button>
-                <button class="btn btn-primary d-none" type="button" id="btn-loading" disabled>
-                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                    <span class="visually-hidden" role="status">Loading...</span>
-                </button>
+        </div>
+        <div class="table-wrapper">
+            <table class="table table-hover table-striped" id="tbl-busan">
+                <thead>
+                <tr>
+                    <th>타이틀</th>
+                    <th>메인이미지</th>
+                    <th>교통정보</th>
+                    <th>구</th>
+                    <th>주소</th>
+                    <th>홈페이지 url</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.size(busanList)} > 0" th:each="item : ${busanList}">
+                    <th th:text="${item.getMAIN_TITLE()}">타이틀</th>
+                    <th>
+                        <img th:src="${item.getMAIN_IMG_NORMAL()}" style="width: 100%" alt="">
+                    </th>
+                    <th th:text="${item.getTRFC_INFO()}">교통정보</th>
+                    <th th:text="${item.getGUGUN_NM()}">구</th>
+                    <th th:text="${item.getADDR1()}">주소</th>
+                    <th th:text="${item.getHOMEPAGE_URL()}">홈페이지 url</th>
+                </tr>
+                <tr th:unless="${#lists.size(busanList)} > 0">
+                    <th colspan="6">데이터가 없습니다.</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card mt-2" style="width: 18rem;" th:if="${#lists.size(busanList)} > 0" th:each="item : ${busanList}">
+            <img th:src="${item.getMAIN_IMG_NORMAL()}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text" th:text="${item.getMAIN_TITLE()}"></p>
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:text="${item.getTRFC_INFO()}">An item</li>
+                <li class="list-group-item" th:text="${item.getGUGUN_NM()}">A second item</li>
+                <li class="list-group-item" th:text="${item.getADDR1()}">A third item</li>
+                <li class="list-group-item" th:text="${item.getHOMEPAGE_URL()}">A third item</li>
+            </ul>
         </div>
     </div>
-    <div class="table-wrapper">
-        <table class="table table-hover table-striped" id="tbl-busan">
-            <thead>
-            <tr>
-                <th>타이틀</th>
-                <th>메인이미지</th>
-                <th>교통정보</th>
-                <th>구</th>
-                <th>주소</th>
-                <th>홈페이지 url</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:if="${#lists.size(busanList)} > 0" th:each="item : ${busanList}">
-                <th th:text="${item.getMAIN_TITLE()}">타이틀</th>
-                <th>
-                    <img th:src="${item.getMAIN_IMG_NORMAL()}" style="width: 100%" alt="">
-                </th>
-                <th th:text="${item.getTRFC_INFO()}">교통정보</th>
-                <th th:text="${item.getGUGUN_NM()}">구</th>
-                <th th:text="${item.getADDR1()}">주소</th>
-                <th th:text="${item.getHOMEPAGE_URL()}">홈페이지 url</th>
-            </tr>
-            <tr th:unless="${#lists.size(busanList)} > 0">
-                <th colspan="6">데이터가 없습니다.</th>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-    </div>
-</div>
+    <div th:replace="~{layout/footer :: footer}"></div>
 
+</section>
 </body>
 </html>

@@ -39,9 +39,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="/css/notice.css"/>
-    <style>
-
-    </style>
 
 </head>
 
@@ -69,20 +66,6 @@
             <br>
         </div>
     </div>
-
-    <!--<div class="section contents">-->
-    <!--    <div class="InnerBox">-->
-    <!--        <ul class="snb" >-->
-    <!--            <li><a href="#" class="text-center" >공지사항</a></li>-->
-    <!--        </ul>-->
-
-    <!--        <div class="frame">-->
-    <!--            <iframe src="/board/notice/boardList" width='100%' height='1200' frameborder="0"></iframe>-->
-
-    <!--        /* Tables  [521,524 번 줄-> 공지사항] */ -->
-    <!-- </div>-->
-    <!--    </div>-->
-    <!--</div>-->
 </section>
 
 <script type="text/javascript">
@@ -93,58 +76,80 @@
         $("#Banner .ttls b").text("NOTICE");
         $("#Banner .ttls strong").text("NOTICE");
 
-        // $(".frame h3 strong").text("공지사항");
-        // $(".frame h3 span").text("공지사항과 다양한 소식을 확인해보세요.");
-        // $(".frame iframe").attr("src","/board/bbs/board.php?bo_table=notice_");
-
     });
 </script>
 
 <main class="container mt-8">
-    <table class="table table-hover table-striped">
+
+    <!-- 검색 -->
+    <form class="d-flex justify-content-end mb-3" method="get">
+        <input id="keyword" name="keyword" class="me-2" type="text" placeholder="제목을 입력해주세요" th:value="${keyword}">
+        <button class="btn btn-primary" type="submit" id="btn-submit">검색</button>
+    </form>
+
+    <table class="table table-hover table-striped text-center">
         <colgroup>
             <col style="width: 10%">
-            <col style="width: 30%">
+            <col style="width: 50%">
+            <col style="width: 10%">
             <col style="width: 20%">
-            <col style="width: 10%">
-            <col style="width: 10%">
             <col style="width: 10%">
         </colgroup>
 
         <thead>
         <tr>
-            <th style="background-color:navajowhite">번호</th>
-            <th style="background-color:navajowhite">제목</th>
-            <th style="background-color:navajowhite">글쓴이</th>
-            <th style="background-color:navajowhite">작성일</th>
-            <th style=" background-color:navajowhite">수정 날짜</th>
-            <th style="background-color:navajowhite">조회수</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">번호</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">제목</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">글쓴이</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">작성일</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">조회수</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:if="${#lists.size(boardList)} > 0" th:each="item : ${boardList}">
+
+        <tr th:if="${#lists.size(boardList.getList())} > 0" th:each="item : ${boardList.getList()}">
 
             <td th:text="${item.noticeNum}"></td>
-            <td>
+            <td class="text-start">
                 <a class="text-decoration-none" th:href="@{|/notDetail.do/${item.noticeNum}|}"
                    th:text="${item.noticeTitle}"></a>
             </td>
             <td th:text="${item.noticeId}"></td>
             <td th:text="${item.noticePostdate}"></td>
-            <td th:text="${item.noticeUpdateDate}"></td>
+<!--            <td th:text="${item.noticeUpdateDate}"></td>-->
             <td th:text="${item.noticeVisitcount}"></td>
         </tr>
-        <tr th:unless="${#lists.size(boardList) > 0}">
+        <tr th:unless="${#lists.size(boardList.getList()) > 0}">
             <td colspan="5">조회결과 없음</td>
         </tr>
         </tbody>
     </table>
+
     <div class="mt-6 d-flex justify-content-end">
-<!--        <a class="btn btn-success" href="/notWrite.do"><b> 글쓰기 </b></a>-->
         <div th:if="${session.userId} == 'admin'">
-            <a class="btn btn-success" href="/notWrite.do"><b> 글쓰기 </b></a>
+            <a class="btn btn-success custom-bg" href="/notWrite.do"><b> 글쓰기 </b></a>
         </div>
+    </div>
+
+    <div id="paging">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${boardList.getPrePage() == 0} ? 'disabled'">
+                <a class="page-link" href="#"
+                   th:href="@{/not.do(page=${boardList.getPrePage()}, keyword=${keyword})}">&laquo;</a>
+            </li>
+            <li class="page-item"
+                th:each="p : ${#numbers.sequence(boardList.getNavigateFirstPage(), boardList.getNavigateLastPage())}"
+                th:classappend="${p == boardList.getPageNum()}? 'active'">
+                <a class="page-link" href="#" th:href="@{/not.do(page=${p}, keyword=${keyword})}"
+                   th:text="${p}">1</a>
+
+            </li>
+            <li class="page-item" th:classappend="${boardList.getNextPage() == 0} ? 'disabled'">
+                <a class="page-link" href="#"
+                   th:href="@{/not.do(pageNum=${boardList.getNextPage()}, keyword=${keyword})}">&raquo;</a>
+            </li>
+        </ul>
     </div>
 </main>
 

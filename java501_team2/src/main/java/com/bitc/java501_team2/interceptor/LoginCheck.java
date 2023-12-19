@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.io.PrintWriter;
+
 public class LoginCheck implements HandlerInterceptor {
 
     @Override
@@ -22,7 +24,17 @@ public class LoginCheck implements HandlerInterceptor {
             System.out.println("비 로그인 상태");
             System.out.println("USER ID :" + (String) session.getAttribute("userId"));
 
-            res.sendRedirect("/board2/login/login.do");
+            res.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = res.getWriter();
+            out.println("<script>alert('로그인이 필요합니다.'); history.back();</script>");
+//            out.println("<script>alert('로그인이 필요합니다.'); location.href = '/login.do';</script>");
+
+            out.flush();
+            res.flushBuffer();
+            out.close();
+
+//            res.sendRedirect("/login.do");
+
             return false;
         }
         else{

@@ -1,5 +1,6 @@
 package com.bitc.java501_team2.controller;
 
+import com.bitc.java501_team2.dto.ReservationDto;
 import com.bitc.java501_team2.dto.UserDTO;
 import com.bitc.java501_team2.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URLEncoder;
+import java.util.List;
 
 //@RequestMapping("/login/")
 @Controller
@@ -52,7 +54,7 @@ public class LoginController {
         }
         else{
             String msg = URLEncoder.encode("로그인 정보가 다릅니다.", "UTF-8");
-            return "redirect:/login/login.do?errorMsg=" + msg;
+            return "redirect:/login.do?errorMsg=" + msg;
         }
     }
 
@@ -76,11 +78,14 @@ public class LoginController {
         ModelAndView mv = new ModelAndView("login/myPage");
 
         UserDTO user = userService.getUserInfo(userId);
+        List<ReservationDto> reservationList = userService.getReservationInfo(userId);
 
         mv.addObject("user", user);
+        mv.addObject("reservationList", reservationList);
 
         return mv;
     }
+
 
 
 

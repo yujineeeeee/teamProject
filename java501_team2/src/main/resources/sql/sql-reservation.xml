@@ -10,7 +10,7 @@
             reservation(reservation_id, reservation_name, reservation_date, reservation_room_type1, room_type1_person_cnt, reservation_room_type2, room_type2_person_cnt, reservation_room_type3,
             room_type3_person_cnt, check_in_date, check_out_date)
         VALUES
-            ('test1', '테스터1', NOW(), #{reservationRoomType1}, #{roomType1PersonCnt}, #{reservationRoomType2}, #{roomType2PersonCnt}, #{reservationRoomType3}, #{roomType3PersonCnt}, #{checkInDate}, #{checkOutDate})
+            (#{reservationId}, #{reservationName}, NOW(), #{reservationRoomType1}, #{roomType1PersonCnt}, #{reservationRoomType2}, #{roomType2PersonCnt}, #{reservationRoomType3}, #{roomType3PersonCnt}, #{checkInDate}, #{checkOutDate})
     </insert>
 
 </mapper>

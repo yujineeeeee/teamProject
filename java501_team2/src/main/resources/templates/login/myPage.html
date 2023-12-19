@@ -12,8 +12,8 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내" />
-    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장" />
+    <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내"/>
+    <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장"/>
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="츠키노야(月の や)료칸&풀빌라">
@@ -22,22 +22,23 @@
     <meta property="og:url" content="http://pensionsol.net/">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
 
     <script type="text/javascript" src="js/modify.js" defer></script>
     <script type="text/javascript" src="js/swiper.js" defer></script>
     <script type="text/javascript" src="js/common.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+            defer></script>
     <script type="text/javascript" src="js/digitalnowplus.popup.js" defer></script>
 
     <!-- analytics -->
     <!-- //analytics -->
 
     <script>
-        $(document).ready(function(){
-            $("#btn-main").on("click", function (){
+        $(document).ready(function () {
+            $("#btn-main").on("click", function () {
                 location.href = "/main.do";
             });
         });
@@ -65,19 +66,22 @@
                 <div class="ms-1 mb-3 row">
                     <label for="user-id" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="user-id" th:value="${session.userId}">
+                        <input type="text" readonly class="form-control-plaintext" id="user-id"
+                               th:value="${session.userId}">
                     </div>
                 </div>
                 <div class="ms-1 mb-3 row">
                     <label for="user-name" class="col-sm-2 col-form-label">NAME</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="user-name" th:value="${session.userName}">
+                        <input type="text" readonly class="form-control-plaintext" id="user-name"
+                               th:value="${session.userName}">
                     </div>
                 </div>
                 <div class="ms-1 mb-3 row">
                     <label for="user-regidate" class="col-sm-2 col-form-label">CREATE DATE</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="user-regidate" th:value="${session.userRegidate}">
+                        <input type="text" readonly class="form-control-plaintext" id="user-regidate"
+                               th:value="${session.userRegidate}">
                     </div>
                 </div>
             </div>
@@ -86,24 +90,51 @@
         <h3 class="mt-5">MY RESERVATION</h3>
         <div class="card mt-3 p-3">
             <div class="card-body">
-                <div class="ms-1 mb-3 row">
-                    <label for="check-in-date" class="col-sm-2 col-form-label">예약날짜</label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="check-in-date" th:value="|${session.userId} ~ ${session.userPass}|">
+
+                <div th:if="${#lists.size(reservationList)} > 0" th:each="item : ${reservationList}">
+                    <div class="border">
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="com-sm-3 col-form-label">예약자</label>
+                                <div class="col-sm">
+                                    <input type="text" readonly class="form-control-plaintext" th:value="${item.reservationName}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+<!--                                <label class="com-sm-3 col-form-label">예약한 날짜</label>-->
+                                <div class="col-sm">
+                                    <input type="text" readonly class="form-control-plaintext" th:value="${item.reservationDate}">
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="row" th:if="${item.reservationRoomType1} == null"></div>-->
+<!--                        <div class="row" th:unless="${item.reservationRoomType1} == null">-->
+<!--                            <div class="col-sm">-->
+<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType1}, ${item.roomType1PersonCnt}| 명">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row" th:if="${item.reservationRoomType2} == null"></div>-->
+<!--                        <div class="row" th:unless="${item.reservationRoomType2} == null">-->
+<!--                            <div class="col-sm">-->
+<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType2}, ${item.roomType2PersonCnt}| 명">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row" th:if="${item.reservationRoomType3} == null"></div>-->
+<!--                        <div class="row" th:unless="${item.reservationRoomType3} == null">-->
+<!--                            <div class="col-sm">-->
+<!--                                <input type="text" readonly class="form-control-plaintext" th:value="|${item.reservationRoomType3}, ${item.roomType3PersonCnt}| 명">-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
-                <div class="ms-1 mb-3 row">
-                    <label for="reservation-room-type" class="col-sm-2 col-form-label">방정보</label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="reservation-room-type" >
-                    </div>
+                <div th:unless="${#lists.size(reservationList)} > 0">
+                    <span>조회 결과 없음</span>
+
                 </div>
-                <div class="ms-1 mb-3 row">
-                    <label for="reservation-person-cnt" class="col-sm-2 col-form-label">예약인원</label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="reservation-person-cnt">
-                    </div>
-                </div>
+
+
             </div>
         </div>
 

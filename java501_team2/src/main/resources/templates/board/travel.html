@@ -127,31 +127,30 @@
 
         <!--    <div style="height: 200px"></div>-->
 
-        <div class="container mt-5">
-            <div class="d-flex justify-content-center">
-                <div class="row g-2">
-                    <div class="col-sm">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">페이지번호</span>
-                            <input type="text" class="form-control" id="pageNum" placeholder="숫자 입력">
-                            <span class="input-group-text">한 페이지 결과 수</span>
-                            <input type="text" class="form-control" id="pageResult" placeholder="숫자 입력">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-primary" id="btn-busan-search">검색</button>
-                        <button class="btn btn-primary d-none" type="button" id="btn-loading" disabled>
-                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                            <span class="visually-hidden" role="status">Loading...</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row row-cols-1 row-cols-md-4">
+        <div class="container">
+<!--            <div class="d-flex justify-content-center">-->
+<!--                <div class="row g-2">-->
+<!--                    <div class="col-sm">-->
+<!--                        <div class="input-group mb-3">-->
+<!--                            <span class="input-group-text">페이지번호</span>-->
+<!--                            <input type="text" class="form-control" id="pageNum" placeholder="숫자 입력">-->
+<!--                            <span class="input-group-text">한 페이지 결과 수</span>-->
+<!--                            <input type="text" class="form-control" id="pageResult" placeholder="숫자 입력">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-2">-->
+<!--                        <button type="button" class="btn btn-primary" id="btn-busan-search">검색</button>-->
+<!--                        <button class="btn btn-primary d-none" type="button" id="btn-loading" disabled>-->
+<!--                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>-->
+<!--                            <span class="visually-hidden" role="status">Loading...</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="row row-cols-2 row-cols-md-3">
                 <!-- Thymeleaf loop for displaying cards -->
                 <div th:if="${#lists.size(busanList)} > 0" th:each="item, iterStat : ${busanList}" class="col-md-3">
-                    <div class="card mt-2 cardList" style="width: 18rem;">
+                    <div class="card mt-3 cardList" style="width: 18rem;">
 
                         <!--                API 데이터 불러오는 부분 -->
                         <a data-bs-toggle="modal" data-bs-target="#imageModal"

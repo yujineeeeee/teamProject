@@ -75,7 +75,7 @@ public class ApiController {
         String opt2 = "&pageNo=";
         String opt3 = "&numOfRows=";
 
-        String serviceUrl = busanServiceUrl + opt1 + busanServiceKey + opt2 + "1" + opt3 + "10";
+        String serviceUrl = busanServiceUrl + opt1 + busanServiceKey + opt2 + "1" + opt3 + "20";
 
         List<BusanItemDto> busanList = busanService.getBusanList(serviceUrl);
         mv.addObject("busanList", busanList);

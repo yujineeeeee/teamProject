@@ -89,11 +89,12 @@
 
     <table class="table table-hover table-striped text-center">
         <colgroup>
-            <col style="width: 10%">
-            <col style="width: 50%">
+            <col style="width: 5%">
+            <col style="width: 40%">
             <col style="width: 10%">
             <col style="width: 20%">
-            <col style="width: 10%">
+            <col style="width: 20%">
+            <col style="width: 5%">
         </colgroup>
 
         <thead>
@@ -102,6 +103,7 @@
             <th style="background-color:#3e7a9f;  color: #ffffff">제목</th>
             <th style="background-color:#3e7a9f;  color: #ffffff">글쓴이</th>
             <th style="background-color:#3e7a9f;  color: #ffffff">작성일</th>
+            <th style="background-color:#3e7a9f;  color: #ffffff">수정일</th>
             <th style="background-color:#3e7a9f;  color: #ffffff">조회수</th>
         </tr>
         </thead>
@@ -117,7 +119,7 @@
             </td>
             <td th:text="${item.noticeId}"></td>
             <td th:text="${item.noticePostdate}"></td>
-<!--            <td th:text="${item.noticeUpdateDate}"></td>-->
+            <td th:text="${item.noticeUpdateDate}"></td>
             <td th:text="${item.noticeVisitcount}"></td>
         </tr>
         <tr th:unless="${#lists.size(boardList.getList()) > 0}">

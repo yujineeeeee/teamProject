@@ -42,29 +42,30 @@
                 location.href = "/main.do";
             });
 
-            $(".btnCancel").on("click", function(){
 
-                const reservationNum = $(this).attr("id");
-                const userId = $("user-id").val();
+            $(".btnUserDelete").on("click", function(){
+                const selUserId = $(this).attr("id");
 
-                const confirmed = confirm("예약을 취소하시겠습니까?")
+                const confirmed = confirm("회원 삭제하시겠습니까?");
 
                 $.ajax({
-                    url:"/myReservationDelete.do",
-                    type:"POST",
-                    data:{reservationNum : reservationNum},
-                    success:function(data){
+                    url: "/userDelete.do",
+                    type: "POST",
+                    data: {selUserId : selUserId},
+                    success: function(data){
+
                         if(confirmed){
-                            alert("예약이 취소되었습니다.");
-                            location.href = "/myPage.do?userId=" + userId;
+                            alert("삭제되었습니다.");
+                            location.href = "/adminPage.do";
                         }
+
                     },
-                    error:function(){
+                    error: function (){
                         alert("통신 실패");
                     }
                 })
-
             })
+
         });
     </script>
 
@@ -111,11 +112,59 @@
             </div>
         </div>
 
-        <h3 class="mt-5">MY RESERVATION</h3>
+        <h3 class="mt-5">USER INFO</h3>
         <div class="card mt-3 p-3">
             <div class="card-body">
-                <div th:if="${#lists.size(reservationList)} > 0" th:each="item : ${reservationList}">
+                <table class="table table-hover table-striped text-center align-middle">
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 10%">
+                    </colgroup>
+
+                    <thead>
+                    <tr>
+                        <th>순번</th>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>회원가입일</th>
+                        <th>회원정보 업데이트일</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${userList.size()} > 0" th:each="item : ${userList}">
+                        <td th:text="${item.userSeq}">순번</td>
+                        <td th:text="${item.userId}" id="sel-user-id">아이디</td>
+                        <td th:text="${item.userName}">이름</td>
+                        <td th:text="${item.userRegidate}">회원가입일</td>
+                        <td th:text="${item.userUpdateDate}">회원정보 업데이트일</td>
+
+                        <td th:if="${item.userDeletedYn} == 'N'"><button type="button" class="btn btn-primary btnUserDelete" th:attr="id=${item.userId}">탈퇴</button></td>
+                        <td th:unless="${item.userDeletedYn} == 'N'"><button type="button" class="btn btn-danger" disabled>탈퇴됨</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <h3 class="mt-5">USER RESERVATION</h3>
+        <div class="card mt-3 p-3">
+            <div class="card-body">
+                <div th:if="${#lists.size(userReservationList)} > 0" th:each="item : ${userReservationList}">
                     <div class="border-bottom border-top mb-2">
+                        <div class="ms-1 mb-3 row">
+                            <label for="reservationId" class="col-sm-2 col-form-label">유저 아이디</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="reservationId"
+                                       th:value="${item.reservationId}">
+                            </div>
+                        </div>
+
                         <div class="ms-1 mb-3 row">
                             <label for="reservationDate" class="col-sm-2 col-form-label">예약날짜</label>
                             <div class="col-sm-10">
@@ -161,22 +210,14 @@
                                        th:value="${item.checkOutDate}">
                             </div>
                         </div>
-
-                        <div class="ms-1 mb-3 row">
-                            <div class="col-sm d-flex justify-content-end">
-                                <button class="btn btn-secondary btnCancel" th:attr="id=${item.reservationNum}">예약취소</button>
-                            </div>
-                        </div>
-
-                        </div>
-
                     </div>
                 </div>
-                <div th:unless="${#lists.size(reservationList)} > 0">
+                <div th:unless="${#lists.size(userReservationList)} > 0">
                     <span>조회 결과 없음</span>
                 </div>
             </div>
         </div>
+
 
         <div style="height: 100px"></div>
     </div>

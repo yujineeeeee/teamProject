@@ -20,7 +20,7 @@
 
     <select id="getUserInfo" parameterType="String" resultType="com.bitc.java501_team2.dto.UserDTO">
         SELECT
-            user_id, user_name, user_regidate
+            user_id, user_name, user_regidate, user_check
         FROM
             user
         WHERE
@@ -38,8 +38,37 @@
             reservation
         WHERE
             reservation_id = #{userId}
+        AND
+            reservation_deleted_yn = 'N'
     </select>
 
+<!--    예약 취소-->
+    <update id="myReservationDelete" parameterType="String">
+        UPDATE reservation
+        SET reservation_deleted_yn = 'Y'
+        WHERE reservation_num = #{reservationNum}
+    </update>
 
+
+<!--    전체 회원 정보 들고오기 -->
+    <select id="getUserList" resultType="com.bitc.java501_team2.dto.UserDTO">
+        SELECT user_seq, user_id, user_pass, user_name, user_regidate, user_update_date, user_check, user_deleted_yn
+        FROM user
+        WHERE user_check = 0
+    </select>
+
+<!--    유저 삭제-->
+    <update id="userDelete" parameterType="String">
+        UPDATE user SET user_deleted_yn = 'Y'
+        WHERE user_id = #{selUserId}
+    </update>
+
+<!--    유저 예약 리스트 -->
+    <select id="userReservationList" resultType="com.bitc.java501_team2.dto.ReservationDto">
+        SELECT reservation_num, reservation_id, reservation_name, reservation_date, reservation_room_type1, room_type1_person_cnt,
+        reservation_room_type2, room_type2_person_cnt, reservation_room_type3, room_type3_person_cnt, check_in_date, check_out_date
+        FROM reservation
+        ORDER BY reservation_id, reservation_date
+    </select>
 
 </mapper>

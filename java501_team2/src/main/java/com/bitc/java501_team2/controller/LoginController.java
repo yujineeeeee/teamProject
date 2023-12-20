@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URLEncoder;
@@ -22,11 +23,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    //    로그인 페이지
-//    @GetMapping("/login.do")
-//    public String login() throws Exception{
-//        return "loginForm_delete";
-//    }
 
 //    로그인 페이지
     @GetMapping("/login.do")
@@ -48,6 +44,7 @@ public class LoginController {
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("userRegidate", user.getUserRegidate());
+            session.setAttribute("userCheck", user.getUserCheck());
 //            session.setMaxInactiveInterval(60);
 
             return "redirect:/main.do";
@@ -66,12 +63,14 @@ public class LoginController {
         session.removeAttribute("userId");
         session.removeAttribute("userName");
         session.removeAttribute("userRegidate");
+        session.removeAttribute("userCheck");
 
         session.invalidate();
 
         return "redirect:/main.do";
     }
 
+//    마이페이지
     @GetMapping("/myPage.do")
     public ModelAndView myPage(@RequestParam("userId") String userId, HttpServletRequest req) throws Exception{
 
@@ -84,6 +83,37 @@ public class LoginController {
         mv.addObject("reservationList", reservationList);
 
         return mv;
+    }
+
+//    예약 삭제
+    @ResponseBody
+    @PostMapping("/myReservationDelete.do")
+    public void myReservationDelete(@RequestParam("reservationNum") String reservationNum) throws Exception{
+        userService.myReservationDelete(reservationNum);
+//        return null;
+    }
+
+
+
+//    관리자 페이지
+    @GetMapping("/adminPage.do")
+    public ModelAndView adminPage() throws Exception{
+        ModelAndView mv = new ModelAndView("login/adminPage");
+
+        List<UserDTO> userList = userService.getUserList();
+        List<ReservationDto> userReservationList =  userService.userReservationList();
+
+        mv.addObject("userList", userList);
+        mv.addObject("userReservationList", userReservationList);
+
+        return mv;
+    }
+
+//    회원 삭제시키기
+    @ResponseBody
+    @PostMapping("/userDelete.do")
+    public void userDelete(@RequestParam("selUserId") String selUserId) throws Exception{
+        userService.userDelete(selUserId);
     }
 
 

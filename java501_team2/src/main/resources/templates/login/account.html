@@ -1,88 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>회원가입</title>
+    <title>츠키노야(月の や)료칸&풀빌라</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width">
 
     <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내"/>
     <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장"/>
-
     <meta property="og:type" content="website">
-
     <meta property="og:title" content="츠키노야(月の や)료칸&풀빌라">
     <meta property="og:description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
     <meta property="og:image" content="http://gonylab7.speedgabia.com/solspa/m/main/1.jpg">
     <meta property="og:url" content="http://pensionsol.net/">
+    <meta http-equiv="origin-trial"
+          content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-            crossorigin="anonymous"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/resources/account/bundles/web.AccountEntry.bundle.css" type="text/css">
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script type="text/javascript" src="js/digitalnowplus.popup.js" defer></script>
+
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/account.css">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://player.vimeo.com/api/player.js"></script>
 
     <script type="text/javascript" src="js/modify.js" defer></script>
     <script type="text/javascript" src="js/swiper.js" defer></script>
     <script type="text/javascript" src="js/common.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-            defer></script>
-    <script type="text/javascript" src="js/digitalnowplus.popup.js" defer></script>
+
+
     <style>
         #myButton {
             margin-top: 12px; /* 조절하고자 하는 픽셀 값 */
         }
     </style>
 
-    <!-- 중복확인 -->
     <script>
+
         $(document).ready(function () {
+            // 중복확인 버튼
             $("#myButton").on("click", function () {
                 const userId = $("#userId").val();
 
-                $.ajax({
-                    url: "/idCheck.do",
-                    type: "POST",
-                    data: {userId: userId},
-                    success: function (data) {
-                        if (data == 1) {
-                            alert("중복된 아이디 입니다.");
-                            $("#userId").val("");
-                        } else {
-                            alert("멋진 아이디입니다^^");
+                if(userId == ""){
+                    alert("아이디를 입력하세요");
+                }
+                else{
+                    $.ajax({
+                        url: "/idCheck.do",
+                        type: "POST",
+                        data: {userId: userId},
+                        success: function (data) {
+                            if (data == 1) {
+                                alert("중복된 아이디 입니다.");
+                                $("#userId").val("");
+                            }
+                            else {
+                                alert("멋진 아이디입니다^^");
+                            }
+
+                        },
+                        error: function () {
+                            alert("실패");
                         }
-                    },
-                    error: function () {
-                        alert("실패");
-                    }
-                });
+                    });
+                }
+
+
             });
 
+            // 회원 가입 버튼
+            $("#confirmButton").click(function () {
+                if ($.trim($("#userPass").val()) == '' || $.trim($("#userPassCheck").val()) == '') {
+                    alert("비밀번호를 다시 입력해주세요");
+                    return false;
+                } else if ($.trim($("#userName").val()) == '') {
+                    alert("이름을 입력해주세요.");
+                    return false;
+                } else if ($.trim($("#userId").val()) == '') {
+                    alert("아이디를 입력 해주세요 ");
+                    return false;
+                }
+            });
+
+            // 개인정보 동의 체크 박스
+            $("#insertForm").on("submit", function(event) {
+                const checkbox = $("#checkbox");
+
+                if (!checkbox.is(":checked")) {
+                    alert("회원가입이 불가합니다. 개인정보에 동의해야 회원가입이 가능합니다!");
+                    event.preventDefault();
+                }
+                else {
+                    alert("회원가입이 완료되었습니다!");
+                }
+            });
         });
+
+        function pwCheck() {
+            if ($("#userPass").val() == $("#userPassCheck").val()) {
+                $("#pwCheckTxt").text("비밀번호가 일치합니다.").removeClass("Mui-error");
+            } else {
+                $("#pwCheckTxt").text("비밀번호가 맞지 않습니다.").addClass("Mui-error");
+            }
+        }
     </script>
 
-    <!--</head>-->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <meta name="format-detection" content="telephone=no,address=no,email=no">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="icon" href="/images/favicon.ico">
-
-    <link rel="stylesheet" href="/resources/account/bundles/web.AccountEntry.bundle.css" type="text/css">
-
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/account.css">
-
-    <meta http-equiv="origin-trial"
-          content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-
+</head>
 
 <body>
 <div th:replace="~{/layout/header :: headerNavbar}"></div>
@@ -128,6 +168,7 @@
                                         <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-6"><h3
                                                 class="MuiTypography-root MuiTypography-h3">회원 정보</h3></div>
                                     </div>
+
                                     <div class="MuiGrid-root jss21 MuiGrid-container MuiGrid-spacing-xs-2">
                                         <div class="MuiGrid-root jss22 jss23 jss26 MuiGrid-item MuiGrid-grid-xs-8 MuiGrid-grid-sm-8">
                                             <div class="MuiFormControl-root MuiTextField-root jss29 MuiFormControl-marginNormal MuiFormControl-fullWidth">
@@ -210,35 +251,26 @@
                                     </div>
                                 </div>
 
-                                <script>
-                                    function pwCheck() {
-                                        if ($("#userPass").val() == $("#userPassCheck").val()) {
-                                            $("#pwCheckTxt").text("비밀번호가 일치합니다.").removeClass("Mui-error");
-                                        } else {
-                                            $("#pwCheckTxt").text("비밀번호가 맞지 않습니다.").addClass("Mui-error");
-
-                                        }
-                                    }
-                                </script>
-
-                                <div class="MuiFormGroup-root"><label class="MuiFormControlLabel-root jss60">
+                                <div class="MuiFormGroup-root">
+                                    <label class="MuiFormControlLabel-root jss60">
                                 <span class="MuiButtonBase-root MuiIconButton-root jss61 MuiCheckbox-root MuiCheckbox-colorPrimary jss62 Mui-checked MuiIconButton-colorPrimary"
                                       aria-disabled="false">
                                  <span class="MuiIconButton-label">
-                                <input class="jss64"
-                                       type="checkbox"
-                                       data-indeterminate="false"
-                                       value="PersonalInformation"
-                                       data-gtm-form-interact-field-id="0">
-              <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-                  <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span>
-                                <span class="MuiTouchRipple-root"></span></span>
-                                    <input type="checkbox" id="checkbox" style="display: none;"> <!-- 추가된 체크박스 -->
-                                    <label for="checkbox"
-                                           class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">
-                                        동의합니다.</label>
-                                </label>
 
+                  <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                                     <!--                                     </svg>-->
+                                 </span>
+                                <span class="MuiTouchRipple-root">
+
+                                </span>
+                                </span>
+
+                                        <!-- 추가된 체크박스 -->
+                                        <input type="checkbox" id="checkbox" name="checkbox" value="agree">
+                                        <label for="checkbox"
+                                               class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1">
+                                            개인정보에 동의합니다.</label>
+                                     </label>
 
                                 </div>
                             </div>
@@ -250,27 +282,9 @@
                                 </button>
                             </div>
 
-                            <script>
-                                $("#confirmButton").click(function () {
-                                    if ($.trim($("#userPass").val()) == '' || $.trim($("#userPassCheck").val()) == '') {
-                                        alert("비밀번호를 다시 입력해주세요");
-                                        return false;
-                                    } else if ($.trim($("#userName").val()) == '') {
-                                        alert("이름을 입력해주세요.");
-                                        return false;
-                                    } else if ($.trim($("#userId").val()) == '') {
-                                        alert("아이디를 입력 해주세요 ");
-                                        return false;
-                                    }
-                                    $("#insertForm").submit();
-                                });
-                            </script>
-
-
                             <!--                        </div>-->
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -298,7 +312,6 @@
     gtag('config', 'G-G6K4J3ZBG9');
 </script>
 
-
 <script src="/resources/account/bundles/dd6f0c68.chunk.bundle.js"
         type="text/javascript"></script>
 <script src="/resources/account/bundles/aecb736f.chunk.bundle.js"
@@ -306,7 +319,6 @@
 <script src="/resources/account/bundles/a861a499.chunk.bundle.js"
         type="text/javascript"></script>
 <script src="/resources/account/bundles/web.AccountEntry.bundle.js" type="text/javascript"></script>
-
 
 <div th:replace="~{/layout/footer :: footer}"></div>
 

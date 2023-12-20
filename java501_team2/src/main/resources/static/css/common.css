@@ -107,13 +107,22 @@ header hgroup div ul li.on a span                   {color:#3e7a9f;}
 header hgroup div ul li.on a span.en                {display:none;}
 header hgroup div ul li.on a span.ko                {display:block;}
 
+/*!*header hgroup div ul:nth-of-type(1)                 {left:2%;width:25%;min-width:350px;}*!*/
 /*header hgroup div ul:nth-of-type(1)                 {left:2%;width:25%;min-width:350px;}*/
+/*!*header hgroup div ul:nth-of-type(2)                 {right:2%;width:27%;min-width:350px;}*!*/
+/*header hgroup div ul:nth-of-type(2)                 {right:2%;width:25%;min-width:350px;}*/
+/*header hgroup div ul:nth-of-type(1) li              {width:20%;}*/
+/*!*header hgroup div ul:nth-of-type(2) li              {width:33.33%;}*!*/
+/*header hgroup div ul:nth-of-type(2) li              {width:20%;}*/
+/*header hgroup div ul:nth-of-type(1) li a span       {font-size:15.5px;padding:31px 0;}*/
+/*header hgroup div ul:nth-of-type(2) li a span       {font-size:15.5px;padding:31px 0;}*/
+/*header hgroup div ul li a:hover span                {color:#3e7a9f;display:none;}*/
+/*header hgroup div ul li a:hover span.ko             {display:block;}*/
+
 header hgroup div ul:nth-of-type(1)                 {left:2%;width:25%;min-width:350px;}
-/*header hgroup div ul:nth-of-type(2)                 {right:2%;width:27%;min-width:350px;}*/
 header hgroup div ul:nth-of-type(2)                 {right:2%;width:25%;min-width:350px;}
 header hgroup div ul:nth-of-type(1) li              {width:20%;}
-/*header hgroup div ul:nth-of-type(2) li              {width:33.33%;}*/
-header hgroup div ul:nth-of-type(2) li              {width:20%;}
+header hgroup div ul:nth-of-type(2) li              {width:25%;}
 header hgroup div ul:nth-of-type(1) li a span       {font-size:15.5px;padding:31px 0;}
 header hgroup div ul:nth-of-type(2) li a span       {font-size:15.5px;padding:31px 0;}
 header hgroup div ul li a:hover span                {color:#3e7a9f;display:none;}
@@ -185,7 +194,7 @@ header .familySite ul li a span 				{position:relative;top:-10px;font-size:13px;
 #index #snb div ul:nth-of-type(1)                   {left:2%;width:25%;min-width:350px;}
 #index #snb div ul:nth-of-type(2)                   {right:2%;width:25%;min-width:350px;}
 #index #snb div ul:nth-of-type(1) li                {width:20%;}
-#index #snb div ul:nth-of-type(2) li                {width:20%;}
+#index #snb div ul:nth-of-type(2) li                {width:25%;}
 #index #snb div ul:nth-of-type(1) li a span         {font-size:15.5px;padding:31px 0;}
 #index #snb div ul:nth-of-type(2) li a span         {font-size:15.5px;padding:31px 0;}
 #index #snb div ul li a:hover span                  {color:#3e7a9f;display:none;}

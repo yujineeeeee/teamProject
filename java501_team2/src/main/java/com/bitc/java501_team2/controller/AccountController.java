@@ -35,9 +35,10 @@ public class AccountController {
     //중복확인
     @ResponseBody
     @PostMapping("/idCheck.do")
-    public int idCheck(@RequestParam("userId") String userId) throws Exception {
+    public Object idCheck(@RequestParam("userId") String userId) throws Exception {
 
         int result = accountService.isIdCheck(userId);
+
 
         return result;
     }

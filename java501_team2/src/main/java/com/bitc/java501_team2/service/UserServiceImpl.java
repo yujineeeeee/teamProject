@@ -29,4 +29,24 @@ public class UserServiceImpl implements UserService {
         return userMapper.getReservationInfo(userId);
     }
 
+    @Override
+    public List<UserDTO> getUserList() throws Exception {
+        return userMapper.getUserList();
+    }
+
+    @Override
+    public void userDelete(String selUserId) throws Exception {
+        userMapper.userDelete(selUserId);
+    }
+
+    @Override
+    public List<ReservationDto> userReservationList() throws Exception {
+        return userMapper.userReservationList();
+    }
+
+    @Override
+    public void myReservationDelete(String reservationNum) throws Exception {
+        userMapper.myReservationDelete(reservationNum);
+    }
+
 }

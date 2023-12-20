@@ -62,6 +62,12 @@ public class BoardController {
         return "redirect:/reservation.do";
     }
 
+//    예약 가이드
+    @GetMapping("/reservationGuide")
+    public String reservationGuide() throws Exception{
+        return "board/reservationGuide";
+    }
+
 
 //    ------------------------------------------- 공지사항 ---------------------------------------------------------
 

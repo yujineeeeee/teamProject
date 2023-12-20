@@ -13,7 +13,13 @@ public interface UserMapper {
 
     UserDTO getUserInfo(@Param("userId") String userId) throws Exception;
 
-    UserDTO getUserInfo2(String userId) throws Exception;
-
     List<ReservationDto> getReservationInfo(String userId) throws Exception;
+
+    List<UserDTO> getUserList() throws Exception;
+
+    void userDelete(String selUserId) throws Exception;
+
+    List<ReservationDto> userReservationList() throws Exception;
+
+    void myReservationDelete(String reservationNum) throws Exception;
 }

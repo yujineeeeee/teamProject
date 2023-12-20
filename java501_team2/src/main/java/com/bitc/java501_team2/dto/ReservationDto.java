@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class ReservationDto {
+    private String reservationNum;
     private String reservationId;
     private String reservationName;
     private String reservationDate;

@@ -32,9 +32,6 @@ public class LoginCheck implements HandlerInterceptor {
             out.flush();
             res.flushBuffer();
             out.close();
-
-//            res.sendRedirect("/login.do");
-
             return false;
         }
         else{
@@ -42,7 +39,7 @@ public class LoginCheck implements HandlerInterceptor {
             System.out.println("로그인 상태");
             System.out.println("USER ID :" + (String) session.getAttribute("userId"));
 
-//            session.setMaxInactiveInterval(60);
+            session.setMaxInactiveInterval(60 * 10);
             return true;
         }
     }

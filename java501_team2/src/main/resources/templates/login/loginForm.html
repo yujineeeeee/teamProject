@@ -4,7 +4,7 @@
       class="" data-platform="Win32">
 <head>
     <meta charset="UTF-8">
-    <title>츠키노야(月の や)료칸&amp;풀빌라</title>
+    <title>츠키노야(月の や)료칸&풀빌라</title>
     <meta name="description" id="description" content="거제도펜션,커플,스파,바닷가,복층,럭셔리,외도,키즈랜드,예약안내">
     <meta name="keywords" id="keywords" content="거제도펜션, 커플, 바닷가, 해수욕장">
     <link rel="shortcut icon" href="https://luminouspoolvilla.com/favicon.ico">
@@ -29,8 +29,15 @@
     <script type="text/javascript" src="js/swiper.js" defer=""></script>
     <script type="text/javascript" src="js/common.js" defer=""></script>
 
-    <!-- analytics -->
-    <!-- //analytics -->
+
+    <script th:inline="javascript">
+        const msg = [[${param.errorMsg}]];
+
+        if (!(msg == null || msg == "" || msg == undefined)) {
+            alert(msg);
+        }
+    </script>
+
 </head>
 
 <body id="rooms" class="detail rooms rooms_02">
@@ -76,7 +83,5 @@
 </section>
 
 <div th:replace="~{layout/footer :: footer}"></div>
-
-
 </body>
 </html>

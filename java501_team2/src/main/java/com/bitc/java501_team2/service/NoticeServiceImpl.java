@@ -59,7 +59,6 @@ public class NoticeServiceImpl implements NoticeService {
 //     공지사항  글 삭제
     @Override
     public void NoticeDeleteBoard(int boardNum) throws Exception {
-//        mapper를 사용하여 데이터 베이스의 내용을 삭제
         noticeMapper.NoticeDeleteBoard(boardNum);
     }
 

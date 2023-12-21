@@ -18,8 +18,7 @@ public interface NoticeMapper {
 
     void NoticeInsertBoard(NoticeDto board) throws Exception;
 
-     void updateHitCount(@Param("noticeNum") int noticeNum) throws Exception;
-
+    void updateHitCount(@Param("noticeNum") int noticeNum) throws Exception;
 
     void NoticeUpdateBoard(NoticeDto board) throws Exception;
 

@@ -41,4 +41,8 @@
         WHERE notice_num = #{noticeNum}
     </update>
 
+    <update id="NoticeDeleteBoard" parameterType="int">
+        UPDATE notice SET notice_deleted_yn = 'Y'
+        WHERE notice_num = #{noticeNum}
+    </update>
 </mapper>

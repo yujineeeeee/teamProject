@@ -123,9 +123,8 @@ public class BoardController {
     }
 
     //    공지사항 삭제하기
-    @RequestMapping("/notDeleteBoard.do")
+    @PostMapping("/notDeleteBoard.do")
     public String deleteBoard(@RequestParam("noticeNum") int noticeNum) throws Exception {
-//        Service를 사용하여 데이터 베이스의 내용 삭제
         noticeService.NoticeDeleteBoard(noticeNum);
         return "redirect:/not.do";
     }

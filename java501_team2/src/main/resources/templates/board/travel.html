@@ -41,44 +41,6 @@
     <script type="text/javascript" src="/js/common.js" defer=""></script>
 
     <script>
-
-        // $(document).ready(function () {
-        //     $("#btn-busan-search").on("click", function () {
-        //
-        //         $("#btn-busan-search").addClass("d-none");
-        //         $("#btn-loading").removeClass("d-none");
-        //
-        //         const pageNum = $("#pageNum").val();
-        //         const pageResult = $("#pageResult").val();
-        //         const datas = {pageNum: pageNum, pageResult: pageResult}
-        //
-        //         $.ajax({
-        //             url: "/travelSearch.do",
-        //             type: "POST",
-        //             data: datas,
-        //             success: function (data) {
-        //                 $("#btn-busan-search").removeClass("d-none");
-        //                 $("#btn-loading").addClass("d-none");
-        //
-        //                 const card = $(".cardList");
-        //                 card.empty();
-        //
-        //                 let tag = "";
-        //
-        //                 if(data.length > 0){
-        //                     for(let i = 0; i < data.length; i++){
-        //
-        //                     }
-        //                 }
-        //
-        //             },
-        //             error: function () {
-        //                 alert("통신실패");
-        //             }
-        //         });
-        //
-        //     });
-        // });
         function openModal(imgSrc, title, trfcInfo, gugunNm, addr, homepageUrl) {
             $('#modalContent').html(`
                 <img src="${imgSrc}" style="width: 100%" alt="">
@@ -118,7 +80,7 @@
             <div style="height: 50px;"></div>
             <div class="frame">
                 <h3>
-                    <strong>주변 광광지</strong>
+                    <strong>주변 관광지</strong>
                     <span>숙소 주변 관광지를 소개합니다.</span>
                 </h3>
                 <br>

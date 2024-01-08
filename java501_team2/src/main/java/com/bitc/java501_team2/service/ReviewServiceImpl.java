@@ -22,10 +22,6 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.selectBoardPageList();
     }
 
-    @Override
-    public List<ReviewDto> selectReviewList() throws Exception {
-        return reviewMapper.selectReviewList();
-    }
 
     @Override
     public void deleteReview(String reviewNum) throws Exception {
@@ -35,6 +31,11 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void insertReview(ReviewDto review) throws Exception {
         reviewMapper.insertReview(review);
+    }
+
+    @Override
+    public int checkReviewId(String reviewId) throws Exception {
+        return reviewMapper.checkReviewId(reviewId);
     }
 
 

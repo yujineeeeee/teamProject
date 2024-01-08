@@ -6,12 +6,11 @@ import com.github.pagehelper.Page;
 import java.util.List;
 
 public interface ReviewService {
-
-    List<ReviewDto> selectReviewList() throws Exception;
-
     Page<ReviewDto> selectBoardPageList(int pageNum) throws Exception;
 
     void deleteReview(String reviewNum) throws Exception;
 
     void insertReview(ReviewDto review) throws Exception;
+
+    int checkReviewId(String reviewId) throws Exception;
 }

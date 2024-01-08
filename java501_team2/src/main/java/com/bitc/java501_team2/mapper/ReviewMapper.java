@@ -11,9 +11,10 @@ import java.util.List;
 public interface ReviewMapper {
 
     Page<ReviewDto> selectBoardPageList()throws Exception;
-    List<ReviewDto> selectReviewList() throws Exception;
 
     void deleteReview(String reviewNum) throws Exception;
 
     void insertReview(ReviewDto review) throws Exception;
+
+    int checkReviewId(String reviewId) throws Exception;
 }

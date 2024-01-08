@@ -39,7 +39,7 @@ public class LoginCheck implements HandlerInterceptor {
             System.out.println("로그인 상태");
             System.out.println("USER ID :" + (String) session.getAttribute("userId"));
 
-            session.setMaxInactiveInterval(60 * 10);
+//            session.setMaxInactiveInterval(60 * 10);
             return true;
         }
     }

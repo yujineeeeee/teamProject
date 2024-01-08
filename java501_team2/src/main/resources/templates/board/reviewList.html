@@ -43,26 +43,64 @@
 
     <script>
         $(document).ready(function () {
-            $("button[name=btnDelete]").on("click", function () {
+            // $("button[name=btnDelete]").on("click", function () {
+            //     var reviewNum = $(this).attr("id");
+            //
+            //     const confirmed = confirm("삭제하시겠습니까?")
+            //
+            //     if (confirmed) {
+            //         $.ajax({
+            //             url: "/reviewDelete.do",
+            //             type: "POST",
+            //             data: {reviewNum: reviewNum},
+            //             success: function (data) {
+            //
+            //                 alert("삭제되었습니다.");
+            //                 location.href = "/reviewList.do"
+            //             },
+            //             error: function () {
+            //                 alert("연결 실패");
+            //             }
+            //         })
+            //     }
+            // });
+
+            $(".buttonDelete").on("click", function () {
+                var thisRow = $(this).closest('tr');
+                var reviewId = thisRow.find('td:eq(1)').find('input').val();
                 var reviewNum = $(this).attr("id");
 
-                const confirmed = confirm("삭제하시겠습니까?")
+                var currentUserId = $("#currentUserId").val()
 
-                if (confirmed) {
-                    $.ajax({
-                        url: "/reviewDelete.do",
-                        type: "POST",
-                        data: {reviewNum: reviewNum},
-                        success: function (data) {
+                // console.log("userId : " + currentUserId + ", " + reviewId)
 
-                            alert("삭제되었습니다.");
-                            location.href = "/reviewList.do"
-                        },
-                        error: function () {
-                            alert("연결 실패");
-                        }
-                    })
+                if(currentUserId == "admin" || currentUserId == reviewId){
+                    const confirmed = confirm("삭제하시겠습니까?")
+
+                    if(confirmed){
+                        $.ajax({
+                            url: "/reviewDelete.do",
+                            type: "POST",
+                            data: {reviewNum: reviewNum, reviewId : reviewId},
+                            success: function (data) {
+                                if(data == true){
+                                    alert("삭제되었습니다.");
+                                    location.href = "/reviewList.do"
+                                }
+                                else{
+                                    alert("데이터 삭제 중 오류가 발생했습니다.")
+                                }
+                            },
+                            error: function () {
+                                alert("연결 실패");
+                            }
+                        })
+                    }
                 }
+                else{
+                    alert("작성자 또는 관리자만 삭제할 수 있습니다.")
+                }
+
             });
 
             $("#btn-review-write").on("click", function () {
@@ -123,7 +161,9 @@
                 <tr th:if="${#lists.size(boardPageList.getList())} > 0"
                     th:each="item : ${boardPageList.getList()}">
                     <td th:text="${item.reviewNum}"></td>
-                    <td th:text="${item.reviewId}"></td>
+                    <!--                    <td th:text="${item.reviewId}"></td>-->
+                    <td><input type="text" th:value="${item.reviewId}" style="border: none; background: transparent;">
+                    </td>
                     <td th:text="${item.reviewStar}"></td>
                     <td th:text="${item.reviewContent}" class="text-decoration-none text-start"></td>
                     <td th:text="${item.reviewPostdate}"></td>
@@ -131,6 +171,7 @@
                         <button class="buttonDelete btn " th:attrappend="id=${item.reviewNum}"
                                 name="btnDelete">
                             <img src="/images/delete_icon.png" alt="삭제" style="width: 20px;">
+                            <input id="currentUserId" type="hidden" th:value="${session.userId}">
                         </button>
                     </td>
                 </tr>

@@ -150,8 +150,17 @@ public class BoardController {
     //    리뷰 삭제
     @ResponseBody
     @PostMapping("/reviewDelete.do")
-    public void deleteReview(@RequestParam("reviewNum") String reviewNum) throws Exception {
-        reviewService.deleteReview(reviewNum);
+    public Boolean deleteReview(@RequestParam("reviewNum") String reviewNum, @RequestParam("reviewId") String reviewId) throws Exception {
+        int result = reviewService.checkReviewId(reviewId);
+
+        if(result == 0){
+            return false;
+        }
+        else{
+            reviewService.deleteReview(reviewNum);
+            return true;
+        }
+
     }
 
     // 리뷰 등록

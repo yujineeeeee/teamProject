@@ -45,7 +45,9 @@
             $(".btnCancel").on("click", function(){
 
                 const reservationNum = $(this).attr("id");
-                const userId = $("user-id").val();
+                const userId = $("#user-id").val();
+
+                console.log("userId : " + userId)
 
                 const confirmed = confirm("예약을 취소하시겠습니까?")
 
